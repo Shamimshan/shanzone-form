@@ -100,16 +100,15 @@
             </div>
 
             <div class="kyc-section">
-                <div class="kyc-item"><input type="checkbox" name="kyc_aadhaar" id="kycAadhaar"> Aadhaar Card</div>
-                <div class="kyc-item"><input type="checkbox" name="kyc_voter" id="kycVoter"> Voter ID</div>
-                <div class="kyc-item"><input type="checkbox" name="kyc_pan" id="kycPan"> PAN Card</div>
-                <div class="kyc-item">Other: <input type="text" name="kyc_other" id="kycOther" style="width:100px; border:none; border-bottom:1px solid #000; background: transparent;"></div>
+                <div class="kyc-item"><input type="checkbox" name="kyc_aadhaar"> Aadhaar Card</div>
+                <div class="kyc-item"><input type="checkbox" name="kyc_voter"> Voter ID</div>
+                <div class="kyc-item"><input type="checkbox" name="kyc_pan"> PAN Card</div>
+                <div class="kyc-item">Other: <input type="text" name="kyc_other" style="width:100px; border:none; border-bottom:1px solid #000; background: transparent;"></div>
             </div>
 
             <div class="form-section-title">2. कनेक्शन का विवरण (Plan & Technical Details)</div>
             
-            <div class="kyc-section" style="margin-bottom: 10px;">
-                <div class="kyc-item"><b>Connection Type:</b></div>
+            <div class="kyc-section" style="margin-bottom: 10px; border-bottom: none; border-radius: 5px 5px 0 0;">
                 <div class="kyc-item"><input type="checkbox" name="conn_fiber" id="connFiber"> Fiber Optics</div>
                 <div class="kyc-item"><input type="checkbox" name="conn_wireless" id="connWireless"> Wireless</div>
             </div>
@@ -228,17 +227,17 @@
                         document.getElementById('custEmail').value = d.email;
                         document.getElementById('custPhone').value = d.phone;
                         document.getElementById('custAddress').value = d.address;
-                        document.getElementById('planSelector').value = d.plan || ""; _auto();
+                        document.getElementById('custInstall').value = d.install || "";
                         document.getElementById('routerMac').value = d.routerMac || "";
                         document.getElementById('cpeMac').value = d.cpeMac || "";
-                        document.getElementById('custInstall').value = d.install || "";
                         document.getElementById('custRemarks').value = d.remarks || "";
                         document.getElementById('rowIdx').value = d.row;
+                        if(d.plan) { document.getElementById('planSelector').value = d.plan; _auto(); }
                         document.getElementById('appNo').innerText = d.appNo || ("SZ-" + id);
                         
-                        // Set Checkboxes
-                        document.getElementById('connFiber').checked = d.connType === "Fiber";
-                        document.getElementById('connWireless').checked = d.connType === "Wireless";
+                        // Handle Checkboxes on search
+                        document.getElementById('connFiber').checked = (d.connType === "Fiber");
+                        document.getElementById('connWireless').checked = (d.connType === "Wireless");
                         
                         alert("Loaded!");
                     }
@@ -253,14 +252,13 @@
             let f = new FormData(document.getElementById('mainServiceForm'));
             f.append("appNo", document.getElementById('appNo').innerText);
             
-            // Handle Connection Type
+            // Collect connection type
             let conn = "";
             if(document.getElementById('connFiber').checked) conn = "Fiber";
             else if(document.getElementById('connWireless').checked) conn = "Wireless";
-            f.append("conn_type", conn);
+            f.append("connType", conn);
 
             if(a === "update") f.append("key", _0x1f2[1]);
-            
             fetch(_0x1f2[5], { method: 'POST', body: f }).then(r => r.text()).then(m => alert(m));
         }
 
