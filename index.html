@@ -100,13 +100,20 @@
             </div>
 
             <div class="kyc-section">
-                <div class="kyc-item"><input type="checkbox" name="kyc_aadhaar"> Aadhaar Card</div>
-                <div class="kyc-item"><input type="checkbox" name="kyc_voter"> Voter ID</div>
-                <div class="kyc-item"><input type="checkbox" name="kyc_pan"> PAN Card</div>
-                <div class="kyc-item">Other: <input type="text" name="kyc_other" style="width:100px; border:none; border-bottom:1px solid #000; background: transparent;"></div>
+                <div class="kyc-item"><input type="checkbox" name="kyc_aadhaar" id="kycAadhaar"> Aadhaar Card</div>
+                <div class="kyc-item"><input type="checkbox" name="kyc_voter" id="kycVoter"> Voter ID</div>
+                <div class="kyc-item"><input type="checkbox" name="kyc_pan" id="kycPan"> PAN Card</div>
+                <div class="kyc-item">Other: <input type="text" name="kyc_other" id="kycOther" style="width:100px; border:none; border-bottom:1px solid #000; background: transparent;"></div>
             </div>
 
             <div class="form-section-title">2. कनेक्शन का विवरण (Plan & Technical Details)</div>
+            
+            <div class="kyc-section" style="margin-bottom: 10px;">
+                <div class="kyc-item"><b>Connection Type:</b></div>
+                <div class="kyc-item"><input type="checkbox" name="conn_fiber" id="connFiber"> Fiber Optics</div>
+                <div class="kyc-item"><input type="checkbox" name="conn_wireless" id="connWireless"> Wireless</div>
+            </div>
+
             <div class="data-row">
                 <div class="input-item">
                     <label>प्लान का नाम:</label>
@@ -120,8 +127,11 @@
                 <div class="input-item"><label>स्पीड:</label><input type="text" name="speed" id="speedDisplay" readonly style="background:#f9f9f9;"></div>
                 <div class="input-item"><label>मासिक शुल्क: ₹</label><input type="number" name="price" id="priceDisplay" readonly style="background:#f9f9f9;"></div>
                 <div class="input-item"><label>इंस्टालेशन शुल्क: ₹</label><input type="number" name="install" id="custInstall"></div>
-                <div class="input-item"><label>MAC Address:</label><input type="text" name="mac" id="custMac"></div>
-                <div class="input-item"><label>Comment:</label><input type="text" name="remarks" id="custRemarks"></div>
+                
+                <div class="input-item"><label>Router MAC:</label><input type="text" name="router_mac" id="routerMac"></div>
+                <div class="input-item"><label>CPE MAC:</label><input type="text" name="cpe_mac" id="cpeMac"></div>
+                
+                <div class="input-item" style="grid-column: span 2;"><label>Comment:</label><input type="text" name="remarks" id="custRemarks"></div>
             </div>
 
             <div class="form-section-title center">3. नियम और शर्तें (Terms & Conditions)</div>
@@ -178,7 +188,6 @@
     </div>
 
     <script>
-        // Updated URL in the 5th index of the array
         const _0x1f2 = ['shan123','shan_secure_786','display','block','SZ-','https://script.google.com/macros/s/AKfycbwAR7ybfU1EhZTZen47MRboqpKMfy1JYfb9hQnXmvG1Y0dzpkRki21fshak-OObKG6I/exec'];
 
         window.onload = function() {
@@ -219,12 +228,18 @@
                         document.getElementById('custEmail').value = d.email;
                         document.getElementById('custPhone').value = d.phone;
                         document.getElementById('custAddress').value = d.address;
+                        document.getElementById('planSelector').value = d.plan || ""; _auto();
+                        document.getElementById('routerMac').value = d.routerMac || "";
+                        document.getElementById('cpeMac').value = d.cpeMac || "";
                         document.getElementById('custInstall').value = d.install || "";
-                        document.getElementById('custMac').value = d.mac || "";
                         document.getElementById('custRemarks').value = d.remarks || "";
                         document.getElementById('rowIdx').value = d.row;
-                        if(d.plan) { document.getElementById('planSelector').value = d.plan; _auto(); }
                         document.getElementById('appNo').innerText = d.appNo || ("SZ-" + id);
+                        
+                        // Set Checkboxes
+                        document.getElementById('connFiber').checked = d.connType === "Fiber";
+                        document.getElementById('connWireless').checked = d.connType === "Wireless";
+                        
                         alert("Loaded!");
                     }
                 });
@@ -232,14 +247,20 @@
 
         function _sub(a) {
             const phone = document.getElementById('custPhone').value;
-            const email = document.getElementById('custEmail').value;
             if(phone.length !== 10) return alert("Mobile number 10 digit ka hona chahiye!");
-            if(!email.includes("@")) return alert("Sahi Email ID bharein!");
 
             document.getElementById('formAction').value = a;
             let f = new FormData(document.getElementById('mainServiceForm'));
             f.append("appNo", document.getElementById('appNo').innerText);
+            
+            // Handle Connection Type
+            let conn = "";
+            if(document.getElementById('connFiber').checked) conn = "Fiber";
+            else if(document.getElementById('connWireless').checked) conn = "Wireless";
+            f.append("conn_type", conn);
+
             if(a === "update") f.append("key", _0x1f2[1]);
+            
             fetch(_0x1f2[5], { method: 'POST', body: f }).then(r => r.text()).then(m => alert(m));
         }
 
