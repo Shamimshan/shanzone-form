@@ -24,7 +24,6 @@
             display: none; /* Password ke bina hide rahega */
         }
 
-        /* Form Container */
         .form-luxury-container { 
             background: #fff; 
             max-width: 850px; 
@@ -36,39 +35,29 @@
         }
 
         .form-header-row { display: flex; justify-content: space-between; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; }
-        
         .form-section-title { background: var(--primary); color: white; padding: 6px 15px; font-weight: bold; margin: 15px 0 8px; border-radius: 5px; font-size: 14px; }
         .form-section-title.center { text-align: center; }
-
         .data-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px; }
         .input-item label { display: block; font-size: 12px; font-weight: 600; color: #444; margin-bottom: 2px; }
         .input-item input, .input-item select { width: 100%; padding: 6px 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; height: 32px; }
         
-        /* Photo Box */
         .form-photo-upload-box { width: 110px; text-align: center; }
         .photo-frame { width: 100px; height: 130px; border: 2px dashed #999; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; overflow: hidden; background: #f9f9f9; }
         .btn-change-photo { font-size: 10px; background: #555; color: #fff; padding: 4px 6px; border-radius: 4px; border: none; cursor: pointer; width: 100%; }
 
-        /* KYC Section */
         .kyc-section { display: flex; gap: 20px; padding: 8px 10px; background: #f9f9f9; border-radius: 5px; border: 1px solid #eee; align-items: center; }
         .kyc-item { display: flex; align-items: center; font-size: 12px; font-weight: bold; }
         .kyc-item input { margin-right: 6px; width: 15px; height: 15px; }
 
-        /* Terms & Conditions Grid */
         .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 5px; }
         .terms-column { font-size: 10.5px; line-height: 1.4; color: #222; text-align: justify; }
         .terms-column b.head { display: block; margin-bottom: 5px; color: var(--primary); border-bottom: 1px solid #eee; font-size: 12px; padding-bottom: 2px; }
         .terms-column ol { padding-left: 15px; margin: 0; }
-        .terms-column ol li { margin-bottom: 4px; }
 
         .declaration-section { margin-top: 10px; font-size: 12px; background: #fff8e1; padding: 8px; border-radius: 5px; border-left: 5px solid #ffc107; }
-        
-        /* Footer Signatures */
         .footer-sigs { display: flex; justify-content: space-between; margin-top: 30px; }
         .sig-box { border-top: 1px solid #000; width: 220px; text-align: center; padding-top: 5px; font-weight: bold; font-size: 12px; }
-        .sig-date { font-size: 11px; font-weight: normal; margin-top: 4px; color: #555; }
 
-        /* Buttons */
         .action-btns { text-align: center; margin-top: 25px; }
         .btn-p { padding: 10px 25px; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; margin: 0 10px; color: #fff; }
         .btn-p.print { background: #27ae60; }
@@ -76,10 +65,8 @@
         .btn-p.save { background: #0047ab; }
         .btn-p.update { background: #ff5e14; }
 
-        /* Search Section */
         .no-print { text-align: center; margin-bottom: 20px; background: #f0f0f0; padding: 15px; border-radius: 10px; }
 
-        /* PRINT SETTINGS (A4) */
         @media print {
             @page { size: A4; margin: 0; }
             body { background: white; -webkit-print-color-adjust: exact; margin: 0; padding: 0 !important; display: block !important; }
@@ -101,14 +88,11 @@
             <div>
                 <img src="logo.jpg" style="height:50px;">
                 <p style="font-size: 11px; margin:0;"><b>Address:</b> Malmaliya Urf Sirsia, Partawal Bazar</p>
-                <p style="font-size: 11px; margin:0;"><b>Distt:</b> Maharajganj (U.P.) 273301</p>
                 <p style="font-size: 11px; margin:0;"><b>GSTIN:</b> 09ENXPS9608J1ZQ</p>
             </div>
             <div style="text-align:center;">
                 <h2 style="margin:0; color:var(--primary); font-size: 24px; text-transform:uppercase;">Customer Service Form</h2>
-                <p style="margin:2px 0; font-size: 12px; font-weight: bold;">(Service Application Form)</p>
                 <p style="margin:2px 0; font-size: 13px; font-weight: bold; color: #e74c3c;">App No: <span id="appNo">---</span></p>
-                <p style="margin:2px 0; font-size: 12px;">Customer Care: +91 6391 2244 88</p>
             </div>
             <div class="form-photo-upload-box">
                 <div class="photo-frame" id="photoFrame"><span style="color:#999; font-size: 11px;">PHOTO</span></div>
@@ -124,10 +108,10 @@
             <div class="data-row">
                 <div class="input-item">
                     <label>तारीख (Date):</label>
-                    <input type="text" name="date" id="formattedDate" readonly onclick="document.getElementById('datePicker').showPicker()" style="cursor:pointer; background: #fff;">
+                    <input type="text" name="date" id="formattedDate" readonly onclick="document.getElementById('datePicker').showPicker()" style="background: #fff;">
                     <input type="date" id="datePicker" style="position:absolute; visibility:hidden;" onchange="updateDateDisplay(this)">
                 </div>
-                <div class="input-item"><label>कस्टमर आईडी (ID):</label><input type="text" name="id" id="custId" placeholder="Office Use Only"></div>
+                <div class="input-item"><label>कस्टमर आईडी (ID):</label><input type="text" name="id" id="custId" placeholder="Enter Unique ID"></div>
             </div>
 
             <div class="form-section-title">1. ग्राहक का विवरण एवं KYC (Customer Details & KYC)</div>
@@ -137,13 +121,6 @@
                 <div class="input-item"><label>मोबाइल नंबर (Mobile No):</label><input type="tel" name="phone" id="custPhone"></div>
                 <div class="input-item"><label>ईमेल (Email ID):</label><input type="email" name="email" id="custEmail"></div>
                 <div class="input-item" style="grid-column: span 2;"><label>पूरा पता (Full Address):</label><input type="text" name="address" id="custAddress"></div>
-            </div>
-
-            <div class="kyc-section">
-                <div class="kyc-item"><input type="checkbox"> Aadhaar Card</div>
-                <div class="kyc-item"><input type="checkbox"> Voter ID</div>
-                <div class="kyc-item"><input type="checkbox"> PAN Card</div>
-                <div class="kyc-item">Other: <input type="text" style="width:100px; border:none; border-bottom:1px solid #000; background: transparent;"></div>
             </div>
 
             <div class="form-section-title">2. कनेक्शन का विवरण (Plan & Technical Details)</div>
@@ -158,62 +135,14 @@
                     </select>
                 </div>
                 <div class="input-item"><label>स्पीड (Speed):</label><input type="text" name="speed" id="speedDisplay" readonly style="background:#f9f9f9;"></div>
-                <div class="input-item"><label>मासिक शुल्क (Monthly Bill): ₹</label><input type="number" name="price" id="priceDisplay" readonly style="background:#f9f9f9;"></div>
-                <div class="input-item"><label>इंस्टालेशन शुल्क (Installation): ₹</label><input type="number" name="install" id="custInstall"></div>
-                
-                <div class="input-item"><label>MAC Address (मैक एड्रेस):</label><input type="text" name="mac" id="custMac" placeholder="00:00:00:00:00:00"></div>
-                <div class="input-item"><label>Comment (टिप्पणी):</label><input type="text" name="remarks" id="custRemarks" placeholder="Remarks..."></div>
+                <div class="input-item"><label>मासिक शुल्क: ₹</label><input type="number" name="price" id="priceDisplay" readonly style="background:#f9f9f9;"></div>
+                <div class="input-item"><label>इंस्टालेशन शुल्क: ₹</label><input type="number" name="install" id="custInstall"></div>
+                <div class="input-item"><label>MAC Address:</label><input type="text" name="mac" id="custMac"></div>
+                <div class="input-item"><label>Comment:</label><input type="text" name="remarks" id="custRemarks"></div>
             </div>
 
-            <div class="form-section-title center">3. नियम और शर्तें (Terms & Conditions)</div>
-            <div class="terms-grid">
-                <div class="terms-column">
-                    <b class="head">सामान्य नियम:</b>
-                    <ol>
-                        <li><b>सामान की ओनरशिप:</b> एंटीना, एडेप्टर और वायर कंपनी की संपत्ति है।</li>
-                        <li><b>बिल भुगतान:</b> बिल 1 से 5 तारीख के बीच जमा करना अनिवार्य है।</li>
-                        <li><b>बिजली:</b> एंटीना ko बिजली देने की जिम्मेदारी ग्राहक की होगी।</li>
-                        <li><b>दुरुपयोग:</b> गैर-कानूनी गतिविधि के लिए ग्राहक स्वयं जिम्मेदार होगा।</li>
-                        <li><b>सर्विस:</b> खराबी 24-48 घंटे के भीतर ठीक की जाएगी।</li>
-                        <li><b>सुरक्षा:</b> लापरवाही से सामान टूटने पर मरम्मत का खर्च ग्राहक देगा।</li>
-                        <li><b>शिफ्टिंग:</b> शिफ्ट कराने पर अलग से चार्ज लागू होगा।</li>
-                        <li><b>प्लान बदलाव:</b> बदलाव बिलिंग साइकिल की शुरुआत में होगा।</li>
-                        <li><b>राउटर कॉन्फ़िगरेशन:</b> सेटिंग्स छेड़ने पर सर्विस चार्ज लग सकता है।</li>
-                        <li><b>री-कॉन्फ़िगरेशन:</b> तकनीकी टीम को 24-48 घंटे लग सकते हैं।</li>
-                    </ol>
-                </div>
-                <div class="terms-column">
-                    <b class="head">DoT (दूरसंचार विभाग) की शर्तें:</b>
-                    <ol>
-                        <li><b>राष्ट्रीय सुरक्षा:</b> देश विरोधी गतिविधि पर सेवा बंद कर दी जाएगी।</li>
-                        <li><b>लॉग रिटेंशन:</b> सरकार के निर्देशानुसार, ग्राहक द्वारा उपयोग किए गए इंटरनेट का 'IP लॉग' रिकॉर्ड किया जाता है।</li>
-                        <li><b>अवैध गतिविधि:</b> साइबर अपराध (Cyber Crime), अश्लील सामग्री (Pornography), या कॉपीrait उल्लंघन (Piracy) जैसी गतिविधियों के लिए इंटरनेट का उपयोग पूर्णतः वर्जित है।</li>
-                        <li><b>सत्यापन:</b> सही नाम और पते का प्रमाण देना अनिवार्य है।</li>
-                        <li><b>री-सेलिंग:</b> इंटरनेट ko आगे बेचना कानूनी अपराध hai।</li>
-                        <li><b>Wi-Fi सुरक्षा:</b> अपना पासवर्ड सुरक्षित रखना आपकी जिम्मेदारी है।</li>
-                        <li><b>बल्क स्पैमिंग:</b>बिना अनुमति के बल्क मैसेज भेजना वर्जित है।</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="form-section-title">4. घोषणा (Declaration)</div>
-            
             <div class="declaration-section">
-                <label style="cursor:pointer; display:flex; align-items:center;">
-                    <input type="checkbox" id="agreeCheck" style="width:18px; height:18px; margin-right:10px;">
-                    मैं घोषित करता हूँ कि मैंने सभी नियम पढ़ लिए हैं और मैं सहमत हूँ।
-                </label>
-            </div>
-
-            <div class="footer-sigs">
-                <div class="sig-box">
-                    ग्राहक के हस्ताक्षर
-                    <div class="sig-date">Date: ____________________</div>
-                </div>
-                <div class="sig-box">
-                    शान ज़ोन अधिकृत हस्ताक्षर
-                    <div class="sig-date" style="height:15px;"></div>
-                </div>
+                <label><input type="checkbox" id="agreeCheck"> मैं घोषित करता हूँ कि मैंने सभी नियम पढ़ लिए हैं।</label>
             </div>
 
             <div class="action-btns">
@@ -230,89 +159,70 @@
         const ADMIN_KEY = "shan_secure_786";
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxH_MF4_EsiPTMPIBqUM-btc9eoq9aY2FSBmnRobKhwvkX0R96aAY9xEElWdW43CQE8/exec';
 
-        // Password & Auto-Generate Logic
         window.onload = function() {
-            let p = prompt("Access Password Enter Karein:");
+            let p = prompt("Access Password:");
             if (p === PASS) {
                 document.body.style.display = "block"; 
-                document.getElementById('appNo').innerText = "SZ-" + Math.floor(1000 + Math.random() * 9000);
+                if(!document.getElementById('rowIdx').value) generateNewAppNo();
                 const d = new Date();
                 const ms = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
                 document.getElementById('formattedDate').value = String(d.getDate()).padStart(2,'0') + "-" + ms[d.getMonth()] + "-" + d.getFullYear();
-            } else {
-                alert("Galat Password! Reload karein.");
-                window.location.reload();
-            }
+            } else { location.reload(); }
         };
 
-        // FIXED: Search Secure Logic with all fields
+        function generateNewAppNo() {
+            document.getElementById('appNo').innerText = "SZ-" + Math.floor(1000 + Math.random() * 9000);
+        }
+
         function searchData() {
             let id = document.getElementById('searchIdBox').value;
-            if(!id) return alert("Pehle ID bharein!");
+            if(!id) return alert("Enter ID!");
             
             fetch(`${scriptURL}?id=${id}&key=${ADMIN_KEY}`)
                 .then(res => res.json())
                 .then(data => {
-                    if(data === "Not Found") alert("ID nahi mili!");
+                    if(data === "Not Found") alert("ID not found!");
                     else {
-                        // Personal Details
                         document.getElementById('custId').value = id;
                         document.getElementById('custName').value = data.name;
                         document.getElementById('custFather').value = data.father;
                         document.getElementById('custEmail').value = data.email;
                         document.getElementById('custPhone').value = data.phone;
                         document.getElementById('custAddress').value = data.address;
-                        
-                        // FIX: Plan & Technical Details loading
-                        if(data.plan) {
-                            document.getElementById('planSelector').value = data.plan;
-                            autoFillPlan(); // Trigger auto-fill for speed/price
-                        }
-                        
                         document.getElementById('custInstall').value = data.install || "";
                         document.getElementById('custMac').value = data.mac || "";
                         document.getElementById('custRemarks').value = data.remarks || "";
-                        
-                        // FIX: App No lock from Sheet ID
-                        document.getElementById('appNo').innerText = id;
-
                         document.getElementById('rowIdx').value = data.row;
-                        alert("Data load ho gaya!");
+                        
+                        if(data.plan) {
+                            document.getElementById('planSelector').value = data.plan;
+                            autoFillPlan();
+                        }
+                        
+                        // APp No persistence logic
+                        document.getElementById('appNo').innerText = data.appNo || ("SZ-" + Math.floor(1000 + Math.random() * 9000));
+                        alert("Data Loaded!");
                     }
-                })
-                .catch(err => alert("Error: Access Denied ya Data load nahi ho saka!"));
+                });
         }
 
-        // Save/Update Secure Logic
         function submitToSheet(act) {
             document.getElementById('formAction').value = act;
-            let form = document.getElementById('mainServiceForm');
-            let formData = new FormData(form);
-            
-            if(act === "update") {
-                formData.append("key", ADMIN_KEY);
-            }
+            let formData = new FormData(document.getElementById('mainServiceForm'));
+            formData.append("appNo", document.getElementById('appNo').innerText);
+            if(act === "update") formData.append("key", ADMIN_KEY);
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(res => res.text())
-                .then(msg => alert("Status: " + msg))
-                .catch(err => alert("Error: " + err));
+                .then(msg => alert("Status: " + msg));
         }
 
         function autoFillPlan() {
             const plan = document.getElementById('planSelector').value;
-            const speed = document.getElementById('speedDisplay');
-            const price = document.getElementById('priceDisplay');
+            const speed = document.getElementById('speedDisplay'), price = document.getElementById('priceDisplay');
             if (plan === "LITE") { speed.value = "30 Mbps"; price.value = "599"; }
             else if (plan === "PRO") { speed.value = "50 Mbps"; price.value = "799"; }
             else if (plan === "BOOST") { speed.value = "100 Mbps"; price.value = "1150"; }
-            else { speed.value = ""; price.value = ""; }
-        }
-
-        function updateDateDisplay(input) {
-            const dateObj = new Date(input.value);
-            const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-            document.getElementById('formattedDate').value = String(dateObj.getDate()).padStart(2, '0') + "-" + months[dateObj.getMonth()] + "-" + dateObj.getFullYear();
         }
 
         function previewImg(input) {
@@ -324,19 +234,13 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
-        function doPrint() {
-            if(!document.getElementById('agreeCheck').checked) { alert("Please tick Declaration!"); return; }
-            window.print();
+        function updateDateDisplay(input) {
+            const dateObj = new Date(input.value);
+            const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            document.getElementById('formattedDate').value = String(dateObj.getDate()).padStart(2, '0') + "-" + months[dateObj.getMonth()] + "-" + dateObj.getFullYear();
         }
-
-        function resetForm() {
-            if(confirm("Form reset karein?")) {
-                document.getElementById('mainServiceForm').reset();
-                document.getElementById('photoFrame').innerHTML = '<span style="color:#999; font-size:11px;">PHOTO</span>';
-                document.getElementById('appNo').innerText = "SZ-" + Math.floor(1000 + Math.random() * 9000);
-            }
-        }
+        function doPrint() { if(document.getElementById('agreeCheck').checked) window.print(); else alert("Tick Declaration!"); }
+        function resetForm() { document.getElementById('mainServiceForm').reset(); generateNewAppNo(); }
     </script>
 </body>
 </html>
