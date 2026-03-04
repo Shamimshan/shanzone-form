@@ -73,12 +73,17 @@
         .btn-p { padding: 10px 25px; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; margin: 0 10px; color: #fff; }
         .btn-p.print { background: #27ae60; }
         .btn-p.reset { background: #e74c3c; }
+        .btn-p.save { background: #0047ab; }
+        .btn-p.update { background: #ff5e14; }
+
+        /* Search Section */
+        .no-print { text-align: center; margin-bottom: 20px; background: #f0f0f0; padding: 15px; border-radius: 10px; }
 
         /* PRINT SETTINGS (A4) */
         @media print {
             @page { size: A4; margin: 0; }
             body { background: white; -webkit-print-color-adjust: exact; margin: 0; padding: 0 !important; display: block !important; }
-            .action-btns, .btn-change-photo { display: none !important; }
+            .action-btns, .btn-change-photo, .no-print { display: none !important; }
             .form-luxury-container { max-width: 100% !important; border: none !important; box-shadow: none !important; padding: 12mm 15mm !important; }
         }
     </style>
@@ -86,6 +91,12 @@
 <body>
 
     <div class="form-luxury-container">
+        <div class="no-print">
+            <b style="font-size: 14px;">पुरानी आईडी सर्च करें: </b>
+            <input type="text" id="searchIdBox" placeholder="Customer ID..." style="padding: 6px; border-radius: 5px; border: 1px solid #ccc; width: 150px;">
+            <button type="button" class="btn-p save" style="padding: 6px 15px; margin-left: 10px; font-size: 12px;" onclick="searchData()">Search</button>
+        </div>
+
         <div class="form-header-row">
             <div>
                 <img src="logo.jpg" style="height:50px;">
@@ -107,22 +118,25 @@
         </div>
 
         <form id="mainServiceForm">
+            <input type="hidden" name="row" id="rowIdx">
+            <input type="hidden" name="action" id="formAction" value="save">
+
             <div class="data-row">
                 <div class="input-item">
                     <label>तारीख (Date):</label>
-                    <input type="text" id="formattedDate" readonly onclick="document.getElementById('datePicker').showPicker()" style="cursor:pointer; background: #fff;">
+                    <input type="text" name="date" id="formattedDate" readonly onclick="document.getElementById('datePicker').showPicker()" style="cursor:pointer; background: #fff;">
                     <input type="date" id="datePicker" style="position:absolute; visibility:hidden;" onchange="updateDateDisplay(this)">
                 </div>
-                <div class="input-item"><label>कस्टमर आईडी (ID):</label><input type="text" placeholder="Office Use Only"></div>
+                <div class="input-item"><label>कस्टमर आईडी (ID):</label><input type="text" name="id" id="custId" placeholder="Office Use Only"></div>
             </div>
 
             <div class="form-section-title">1. ग्राहक का विवरण एवं KYC (Customer Details & KYC)</div>
             <div class="data-row">
-                <div class="input-item"><label>नाम (Full Name):</label><input type="text"></div>
-                <div class="input-item"><label>पिता का नाम (Father's Name):</label><input type="text"></div>
-                <div class="input-item"><label>मोबाइल नंबर (Mobile No):</label><input type="tel"></div>
-                <div class="input-item"><label>ईमेल (Email ID):</label><input type="email"></div>
-                <div class="input-item" style="grid-column: span 2;"><label>पूरा पता (Full Address):</label><input type="text"></div>
+                <div class="input-item"><label>नाम (Full Name):</label><input type="text" name="name" id="custName"></div>
+                <div class="input-item"><label>पिता का नाम (Father's Name):</label><input type="text" name="father" id="custFather"></div>
+                <div class="input-item"><label>मोबाइल नंबर (Mobile No):</label><input type="tel" name="phone" id="custPhone"></div>
+                <div class="input-item"><label>ईमेल (Email ID):</label><input type="email" name="email" id="custEmail"></div>
+                <div class="input-item" style="grid-column: span 2;"><label>पूरा पता (Full Address):</label><input type="text" name="address" id="custAddress"></div>
             </div>
 
             <div class="kyc-section">
@@ -136,19 +150,19 @@
             <div class="data-row">
                 <div class="input-item">
                     <label>प्लान का नाम (Select Plan):</label>
-                    <select id="planSelector" onchange="autoFillPlan()">
+                    <select id="planSelector" name="plan" onchange="autoFillPlan()">
                         <option value="">--Select--</option>
                         <option value="LITE">LITE PLAN (30Mbps)</option>
                         <option value="PRO">PRO PLAN (50Mbps)</option>
                         <option value="BOOST">BOOST PLAN (100Mbps)</option>
                     </select>
                 </div>
-                <div class="input-item"><label>स्पीड (Speed):</label><input type="text" id="speedDisplay" readonly style="background:#f9f9f9;"></div>
-                <div class="input-item"><label>मासिक शुल्क (Monthly Bill): ₹</label><input type="number" id="priceDisplay" readonly style="background:#f9f9f9;"></div>
-                <div class="input-item"><label>इंस्टालेशन शुल्क (Installation): ₹</label><input type="number"></div>
+                <div class="input-item"><label>स्पीड (Speed):</label><input type="text" name="speed" id="speedDisplay" readonly style="background:#f9f9f9;"></div>
+                <div class="input-item"><label>मासिक शुल्क (Monthly Bill): ₹</label><input type="number" name="price" id="priceDisplay" readonly style="background:#f9f9f9;"></div>
+                <div class="input-item"><label>इंस्टालेशन शुल्क (Installation): ₹</label><input type="number" name="install" id="custInstall"></div>
                 
-                <div class="input-item"><label>MAC Address (मैक एड्रेस):</label><input type="text" placeholder="00:00:00:00:00:00"></div>
-                <div class="input-item"><label>Comment (टिप्पणी):</label><input type="text" placeholder="Remarks..."></div>
+                <div class="input-item"><label>MAC Address (मैक एड्रेस):</label><input type="text" name="mac" id="custMac" placeholder="00:00:00:00:00:00"></div>
+                <div class="input-item"><label>Comment (टिप्पणी):</label><input type="text" name="remarks" id="custRemarks" placeholder="Remarks..."></div>
             </div>
 
             <div class="form-section-title center">3. नियम और शर्तें (Terms & Conditions)</div>
@@ -173,9 +187,9 @@
                     <ol>
                         <li><b>राष्ट्रीय सुरक्षा:</b> देश विरोधी गतिविधि पर सेवा बंद कर दी जाएगी।</li>
                         <li><b>लॉग रिटेंशन:</b> सरकार के निर्देशानुसार, ग्राहक द्वारा उपयोग किए गए इंटरनेट का 'IP लॉग' रिकॉर्ड किया जाता है।</li>
-                        <li><b>अवैध गतिविधि:</b> साइबर अपराध (Cyber Crime), अश्लील सामग्री (Pornography), या कॉपीराइट उल्लंघन (Piracy) जैसी गतिविधियों के लिए इंटरनेट का उपयोग पूर्णतः वर्जित है।</li>
+                        <li><b>अवैध गतिविधि:</b> साइबर अपराध (Cyber Crime), अश्लील सामग्री (Pornography), या कॉपीrait उल्लंघन (Piracy) जैसी गतिविधियों के लिए इंटरनेट का उपयोग पूर्णतः वर्जित है।</li>
                         <li><b>सत्यापन:</b> सही नाम और पते का प्रमाण देना अनिवार्य है।</li>
-                        <li><b>री-सेलिंग:</b> इंटरनेट को आगे बेचना कानूनी अपराध है।</li>
+                        <li><b>री-सेलिंग:</b> इंटरनेट को आगे बेचना कानूनी अपराध hai।</li>
                         <li><b>Wi-Fi सुरक्षा:</b> अपना पासवर्ड सुरक्षित रखना आपकी जिम्मेदारी है।</li>
                         <li><b>बल्क स्पैमिंग:</b>बिना अनुमति के बल्क मैसेज भेजना वर्जित है।</li>
                     </ol>
@@ -204,6 +218,8 @@
 
             <div class="action-btns">
                 <button type="button" class="btn-p reset" onclick="resetForm()">Reset</button>
+                <button type="button" class="btn-p save" onclick="submitToSheet('save')">Save to Sheet</button>
+                <button type="button" class="btn-p update" onclick="submitToSheet('update')">Update Data</button>
                 <button type="button" class="btn-p print" onclick="doPrint()">Print Form</button>
             </div>
         </form>
@@ -211,17 +227,15 @@
 
     <script>
         const PASS = "shan123";
+        const ADMIN_KEY = "shan_secure_786";
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxH_MF4_EsiPTMPIBqUM-btc9eoq9aY2FSBmnRobKhwvkX0R96aAY9xEElWdW43CQE8/exec';
 
         // Password & Auto-Generate Logic
         window.onload = function() {
             let p = prompt("Access Password Enter Karein:");
             if (p === PASS) {
-                document.body.style.display = "block"; // Form Show Karein
-                
-                // App No Generate
+                document.body.style.display = "block"; 
                 document.getElementById('appNo').innerText = "SZ-" + Math.floor(1000 + Math.random() * 9000);
-                
-                // Date Generate
                 const d = new Date();
                 const ms = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
                 document.getElementById('formattedDate').value = String(d.getDate()).padStart(2,'0') + "-" + ms[d.getMonth()] + "-" + d.getFullYear();
@@ -230,6 +244,46 @@
                 window.location.reload();
             }
         };
+
+        // NEW: Search Secure Logic
+        function searchData() {
+            let id = document.getElementById('searchIdBox').value;
+            if(!id) return alert("Pehle ID bharein!");
+            
+            fetch(`${scriptURL}?id=${id}&key=${ADMIN_KEY}`)
+                .then(res => res.json())
+                .then(data => {
+                    if(data === "Not Found") alert("ID nahi mili!");
+                    else {
+                        document.getElementById('custId').value = id;
+                        document.getElementById('custName').value = data.name;
+                        document.getElementById('custFather').value = data.father;
+                        document.getElementById('custEmail').value = data.email;
+                        document.getElementById('custPhone').value = data.phone;
+                        document.getElementById('custAddress').value = data.address;
+                        document.getElementById('rowIdx').value = data.row;
+                        alert("Data load ho gaya!");
+                    }
+                })
+                .catch(err => alert("Error: Access Denied!"));
+        }
+
+        // NEW: Save/Update Secure Logic
+        function submitToSheet(act) {
+            document.getElementById('formAction').value = act;
+            let form = document.getElementById('mainServiceForm');
+            let formData = new FormData(form);
+            
+            // Add security key for updates
+            if(act === "update") {
+                formData.append("key", ADMIN_KEY);
+            }
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(res => res.text())
+                .then(msg => alert("Status: " + msg))
+                .catch(err => alert("Error: " + err));
+        }
 
         function autoFillPlan() {
             const plan = document.getElementById('planSelector').value;
