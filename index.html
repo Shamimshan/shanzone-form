@@ -172,7 +172,7 @@
                     <ol>
                         <li><b>सामान की ओनरशिप:</b> एंटीना, एडेप्टर और वायर कंपनी की संपत्ति है।</li>
                         <li><b>बिल भुगतान:</b> बिल 1 से 5 तारीख के बीच जमा करना अनिवार्य है।</li>
-                        <li><b>बिजली:</b> एंटीना को बिजली देने की जिम्मेदारी ग्राहक की होगी।</li>
+                        <li><b>बिजली:</b> एंटीना ko बिजली देने की जिम्मेदारी ग्राहक की होगी।</li>
                         <li><b>दुरुपयोग:</b> गैर-कानूनी गतिविधि के लिए ग्राहक स्वयं जिम्मेदार होगा।</li>
                         <li><b>सर्विस:</b> खराबी 24-48 घंटे के भीतर ठीक की जाएगी।</li>
                         <li><b>सुरक्षा:</b> लापरवाही से सामान टूटने पर मरम्मत का खर्च ग्राहक देगा।</li>
@@ -189,7 +189,7 @@
                         <li><b>लॉग रिटेंशन:</b> सरकार के निर्देशानुसार, ग्राहक द्वारा उपयोग किए गए इंटरनेट का 'IP लॉग' रिकॉर्ड किया जाता है।</li>
                         <li><b>अवैध गतिविधि:</b> साइबर अपराध (Cyber Crime), अश्लील सामग्री (Pornography), या कॉपीrait उल्लंघन (Piracy) जैसी गतिविधियों के लिए इंटरनेट का उपयोग पूर्णतः वर्जित है।</li>
                         <li><b>सत्यापन:</b> सही नाम और पते का प्रमाण देना अनिवार्य है।</li>
-                        <li><b>री-सेलिंग:</b> इंटरनेट को आगे बेचना कानूनी अपराध hai।</li>
+                        <li><b>री-सेलिंग:</b> इंटरनेट ko आगे बेचना कानूनी अपराध hai।</li>
                         <li><b>Wi-Fi सुरक्षा:</b> अपना पासवर्ड सुरक्षित रखना आपकी जिम्मेदारी है।</li>
                         <li><b>बल्क स्पैमिंग:</b>बिना अनुमति के बल्क मैसेज भेजना वर्जित है।</li>
                     </ol>
@@ -245,7 +245,7 @@
             }
         };
 
-        // NEW: Search Secure Logic
+        // FIXED: Search Secure Logic with all fields
         function searchData() {
             let id = document.getElementById('searchIdBox').value;
             if(!id) return alert("Pehle ID bharein!");
@@ -255,26 +255,40 @@
                 .then(data => {
                     if(data === "Not Found") alert("ID nahi mili!");
                     else {
+                        // Personal Details
                         document.getElementById('custId').value = id;
                         document.getElementById('custName').value = data.name;
                         document.getElementById('custFather').value = data.father;
                         document.getElementById('custEmail').value = data.email;
                         document.getElementById('custPhone').value = data.phone;
                         document.getElementById('custAddress').value = data.address;
+                        
+                        // FIX: Plan & Technical Details loading
+                        if(data.plan) {
+                            document.getElementById('planSelector').value = data.plan;
+                            autoFillPlan(); // Trigger auto-fill for speed/price
+                        }
+                        
+                        document.getElementById('custInstall').value = data.install || "";
+                        document.getElementById('custMac').value = data.mac || "";
+                        document.getElementById('custRemarks').value = data.remarks || "";
+                        
+                        // FIX: App No lock from Sheet ID
+                        document.getElementById('appNo').innerText = id;
+
                         document.getElementById('rowIdx').value = data.row;
                         alert("Data load ho gaya!");
                     }
                 })
-                .catch(err => alert("Error: Access Denied!"));
+                .catch(err => alert("Error: Access Denied ya Data load nahi ho saka!"));
         }
 
-        // NEW: Save/Update Secure Logic
+        // Save/Update Secure Logic
         function submitToSheet(act) {
             document.getElementById('formAction').value = act;
             let form = document.getElementById('mainServiceForm');
             let formData = new FormData(form);
             
-            // Add security key for updates
             if(act === "update") {
                 formData.append("key", ADMIN_KEY);
             }
