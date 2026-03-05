@@ -65,7 +65,7 @@
             <div style="text-align:center;">
                 <h2 style="margin:0; color:var(--primary); font-size: 24px; text-transform:uppercase;">Customer Service Form</h2>
                 <p style="margin:2px 0; font-size: 13px; font-weight: bold; color: #e74c3c;">App No: <span id="appNo">---</span></p>
-                <p style="margin:2px 0; font-size: 12px;">Care: +91 6391 2244 88</p>
+                <p style="margin:2px 0; font-size: 12px;">Customer Care: +91 6391 2244 88</p>
             </div>
             <div class="form-photo-upload-box">
                 <div class="photo-frame" id="photoFrame"><span style="color:#999; font-size: 11px;">PHOTO</span></div>
@@ -99,18 +99,11 @@
                 <div class="input-item" style="grid-column: span 2;"><label>पूरा पता:</label><input type="text" name="address" id="custAddress"></div>
             </div>
 
-            <div class="kyc-section">
-                <div class="kyc-item"><input type="checkbox" name="kyc_aadhaar"> Aadhaar Card</div>
-                <div class="kyc-item"><input type="checkbox" name="kyc_voter"> Voter ID</div>
-                <div class="kyc-item"><input type="checkbox" name="kyc_pan"> PAN Card</div>
-                <div class="kyc-item">Other: <input type="text" name="kyc_other" style="width:100px; border:none; border-bottom:1px solid #000; background: transparent;"></div>
-            </div>
-
             <div class="form-section-title">2. कनेक्शन का विवरण (Plan & Technical Details)</div>
             
             <div class="kyc-section" style="margin-bottom: 10px; border-bottom: none; border-radius: 5px 5px 0 0;">
-                <div class="kyc-item"><input type="checkbox" name="conn_fiber" id="connFiber"> Fiber Optics</div>
-                <div class="kyc-item"><input type="checkbox" name="conn_wireless" id="connWireless"> Wireless</div>
+                <div class="kyc-item"><input type="checkbox" name="conn_fiber" id="connFiber" onchange="document.getElementById('connWireless').checked=false"> Fiber Optics</div>
+                <div class="kyc-item"><input type="checkbox" name="conn_wireless" id="connWireless" onchange="document.getElementById('connFiber').checked=false"> Wireless</div>
             </div>
 
             <div class="data-row">
@@ -151,18 +144,15 @@
                     </ol>
                 </div>
                 <div class="terms-column">
-                    <b class="head">DoT की शर्तें:</b>
+                    <b class="head">विशेष शर्तें:</b>
                     <ol>
-                        <li><b>सामान की ओनरशिप:</b> एंटीना, एडेप्टर और वायर कंपनी की संपत्ति है।</li>
-                        <li><b>बिल भुगतान:</b> बिल 1 से 5 तारीख के बीच जमा करना अनिवार्य है।</li>
-                        <li><b>बिजली:</b> एंटीना को बिजली देने की जिम्मेदारी ग्राहक की होगी।</li>
-                        <li><b>दुरुपयोग:</b> गैर-कानूनी गतिविधि के लिए ग्राहक स्वयं जिम्मेदार होगा।</li>
-                        <li><b>सर्विस:</b> खराबी 24-48 घंटे के भीतर ठीक की जाएगी।</li>
-                        <li><b>सुरक्षा:</b> लापरवाही से सामान टूटने पर मरम्मत का खर्च ग्राहक देगा।</li>
-                        <li><b>शिफ्टिंग:</b> शिफ्ट कराने पर अलग से चार्ज लागू होगा।</li>
-                        <li><b>प्लान बदलाव:</b> बदलाव बिलिंग साइकिल की शुरुआत में होगा।</li>
-                        <li><b>राउटर कॉन्फ़िगरेशन:</b> सेटिंग्स छेड़ने पर सर्विस चार्ज लग सकता है।</li>
-                        <li><b>री-कॉन्फ़िगरेशन:</b> तकनीकी टीम को 24-48 घंटे लग सकते हैं।</li>
+                        <li><b>राष्ट्रीय सुरक्षा:</b> देश विरोधी गतिविधि पर सेवा बंद कर दी जाएगी।</li>
+                        <li><b>लॉग रिटेंशन:</b> सरकार के निर्देशानुसार, ग्राहक द्वारा उपयोग किए गए इंटरनेट का 'IP लॉग' रिकॉर्ड किया जाता है।</li>
+                        <li><b>अवैध गतिविधि:</b> साइबर अपराध (Cyber Crime), अश्लील सामग्री (Pornography), या कॉपीराइट उल्लंघन (Piracy) जैसी गतिविधियों के लिए इंटरनेट का उपयोग पूर्णतः वर्जित है।</li>
+                        <li><b>सत्यापन:</b> सही नाम और पते का प्रमाण देना अनिवार्य है।</li>
+                        <li><b>री-सेलिंग:</b> इंटरनेट को आगे बेचना कानूनी अपराध hai।</li>
+                        <li><b>Wi-Fi सुरक्षा:</b> अपना पासवर्ड सुरक्षित रखना आपकी जिम्मेदारी है।</li>
+                        <li><b>बल्क स्पैमिंग:</b>अनधिकृत बल्क मैसेजिंग प्रतिबंधित है। उल्लंघन करने पर सेवा समाप्ति और कानूनी कार्रवाई संभव है।"</li>
                     </ol>
                 </div>
             </div>
@@ -190,6 +180,7 @@
     </div>
 
     <script>
+        // Mapping as per Sheet: A-Date, B-ID, C-Name, D-Father, E-Mobile, F-Email, G-Address, H-Plan, I-Speed, J-Price, K-RouterMAC, L-CPEMAC, M-Install, N-ConnType, O-Comment, P-AppNo
         const _0x1f2 = ['shan123','shan_secure_786','display','block','SZ-','https://script.google.com/macros/s/AKfycbwAR7ybfU1EhZTZen47MRboqpKMfy1JYfb9hQnXmvG1Y0dzpkRki21fshak-OObKG6I/exec'];
 
         window.onload = function() {
@@ -224,19 +215,23 @@
                 .then(r => r.json()).then(d => {
                     if(d === "Not Found") alert("ID not found!");
                     else {
+                        // Filling data based on your 16 columns
+                        document.getElementById('formattedDate').value = d.date || "";
                         document.getElementById('custId').value = id;
-                        document.getElementById('custName').value = d.name;
-                        document.getElementById('custFather').value = d.father;
-                        document.getElementById('custEmail').value = d.email;
-                        document.getElementById('custPhone').value = d.phone;
-                        document.getElementById('custAddress').value = d.address;
+                        document.getElementById('custName').value = d.name || "";
+                        document.getElementById('custFather').value = d.father || "";
+                        document.getElementById('custPhone').value = d.phone || "";
+                        document.getElementById('custEmail').value = d.email || "";
+                        document.getElementById('custAddress').value = d.address || "";
                         document.getElementById('custInstall').value = d.install || "";
-                        document.getElementById('routerMac').value = d.routerMac || "";
-                        document.getElementById('cpeMac').value = d.cpeMac || "";
+                        document.getElementById('routerMac').value = d.router_mac || "";
+                        document.getElementById('cpeMac').value = d.cpe_mac || "";
                         document.getElementById('custRemarks').value = d.remarks || "";
                         document.getElementById('rowIdx').value = d.row;
+                        
                         if(d.plan) { document.getElementById('planSelector').value = d.plan; _auto(); }
-                        document.getElementById('appNo').innerText = d.appNo || ("SZ-" + id);
+                        document.getElementById('appNo').innerText = d.appNo || (_0x1f2[4] + id);
+                        
                         document.getElementById('connFiber').checked = (d.connType === "Fiber");
                         document.getElementById('connWireless').checked = (d.connType === "Wireless");
                         alert("Loaded!");
@@ -253,9 +248,9 @@
 
             document.getElementById('formAction').value = a;
             let formData = new FormData(document.getElementById('mainServiceForm'));
-            
-            // Build parameters object for safer transfer
             let params = new URLSearchParams();
+            
+            // Map all 16 fields correctly for the script
             for (let pair of formData.entries()) { params.append(pair[0], pair[1]); }
             
             params.append("appNo", document.getElementById('appNo').innerText);
@@ -270,13 +265,16 @@
                 method: 'POST', 
                 body: params.toString(),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            }).then(r => r.text()).then(m => alert(m));
+            }).then(r => r.text()).then(m => {
+                alert(m);
+                if(a === "save") _res();
+            });
         }
 
         function _pre(i){if(i.files&&i.files[0]){var r=new FileReader();r.onload=function(e){document.getElementById('photoFrame').innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;">';};r.readAsDataURL(i.files[0]);}}
         function _updD(i){const d=new Date(i.value);const m=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];document.getElementById('formattedDate').value=String(d.getDate()).padStart(2,'0')+"-"+m[d.getMonth()]+"-"+d.getFullYear();}
         function _prt(){if(document.getElementById('agreeCheck').checked) window.print(); else alert("Pehle declaration par tick karein!");}
-        function _res(){if(confirm("Reset?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); document.getElementById('photoFrame').innerHTML='PHOTO';}}
+        function _res(){if(confirm("Reset?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); _setD(); document.getElementById('photoFrame').innerHTML='PHOTO';}}
     </script>
 </body>
 </html>
