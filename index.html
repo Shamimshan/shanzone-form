@@ -100,7 +100,7 @@
             </div> 
 
             <div class="form-section-title">2. कनेक्शन का विवरण (Plan & Technical Details)</div> 
-            
+             
             <div class="kyc-section" style="margin-bottom: 10px; border-bottom: none; border-radius: 5px 5px 0 0;"> 
                 <div class="kyc-item"><input type="checkbox" name="conn_fiber" id="connFiber" onchange="document.getElementById('connWireless').checked=false"> Fiber Optics</div> 
                 <div class="kyc-item"><input type="checkbox" name="conn_wireless" id="connWireless" onchange="document.getElementById('connFiber').checked=false"> Wireless</div> 
@@ -119,10 +119,10 @@
                 <div class="input-item"><label>स्पीड:</label><input type="text" name="speed" id="speedDisplay" readonly style="background:#f9f9f9;"></div> 
                 <div class="input-item"><label>मासिक शुल्क: ₹</label><input type="number" name="price" id="priceDisplay" readonly style="background:#f9f9f9;"></div> 
                 <div class="input-item"><label>इंस्टालेशन शुल्क: ₹</label><input type="number" name="install" id="custInstall"></div> 
-                
+                 
                 <div class="input-item"><label>Router MAC:</label><input type="text" name="router_mac" id="routerMac"></div> 
                 <div class="input-item"><label>CPE MAC:</label><input type="text" name="cpe_mac" id="cpeMac"></div> 
-                
+                 
                 <div class="input-item" style="grid-column: span 2;"><label>Comment:</label><input type="text" name="remarks" id="custRemarks"></div> 
             </div> 
 
@@ -137,7 +137,7 @@
                         <li><b>दुरुपयोग:</b> गैर-कानूनी गतिविधि के लिए ग्राहक स्वयं जिम्मेदार होगा।</li> 
                         <li><b>सर्विस:</b> खराबी 24-48 घंटे के भीतर ठीक की जाएगी।</li> 
                         <li><b>सुरक्षा:</b> लापरवाही से सामान टूटने पर मरम्मत का खर्च ग्राहक देगा।</li> 
-                        <li><b>शिफ्टिंग:</b> शिफ्ट कराने पर अलग से चार्ज लागू होगा।</li> 
+                        <li><b>शिफ्टिंग:</b> शिफ्ट कराने पर अलग से charge लागू होगा।</li> 
                         <li><b>प्लान बदलाव:</b> बदलाव बिलिंग साइकिल की शुरुआत में होगा।</li> 
                         <li><b>राउटर कॉन्फ़िगरेशन:</b> सेटिंग्स छेड़ने पर सर्विस चार्ज लग सकता है।</li> 
                         <li><b>री-कॉन्फ़िगरेशन:</b> तकनीकी टीम को 24-48 घंटे लग सकते हैं।</li> 
@@ -180,17 +180,20 @@
     </div> 
 
     <script> 
-        const _0x1f2 = ['shan123','shan_secure_786','display','block','SZ-','https://script.google.com/macros/s/AKfycby-TA_qY-Y9YtEw8hnvLYe6O2uwYHs3MkhY93A8WTgiBzMdOe7SU8kJJCuYlf1BGPd-/exec'];
- 
+        // Password and Key masked in Base64 (Updated login password to: Gulista123)
+        const _0x1a2 = ['R3VsaXN0YTEyMw==','c2hhbl9zZWN1cmVfNzg2','display','block','SZ-','https://script.google.com/macros/s/AKfycby-TA_qY-Y9YtEw8hnvLYe6O2uwYHs3MkhY93A8WTgiBzMdOe7SU8kJJCuYlf1BGPd-/exec'];
+        
+        const _v = (s) => atob(s);
+
         window.onload = function() { 
-            if (prompt("Access Password:") === _0x1f2[0]) { 
-                document.body.style[_0x1f2[2]] = _0x1f2[3]; 
+            if (prompt("Access Password:") === _v(_0x1a2[0])) { 
+                document.body.style[_0x1a2[2]] = _0x1a2[3]; 
                 if(!document.getElementById('rowIdx').value) _gnA(); 
                 _setD(); 
             } else { location.reload(); } 
         }; 
 
-        function _gnA() { document.getElementById('appNo').innerText = _0x1f2[4] + Math.floor(1000 + Math.random() * 9000); } 
+        function _gnA() { document.getElementById('appNo').innerText = _0x1a2[4] + Math.floor(1000 + Math.random() * 9000); } 
 
         function _setD() { 
             const d = new Date(); 
@@ -210,7 +213,7 @@
         function _srh() { 
             let id = document.getElementById('searchIdBox').value; 
             if(!id) return alert("Enter ID!"); 
-            fetch(_0x1f2[5] + "?id=" + id + "&key=" + _0x1f2[1]) 
+            fetch(_0x1a2[5] + "?id=" + id + "&key=" + _v(_0x1a2[1])) 
                 .then(r => r.json()).then(d => { 
                     if(d === "Not Found") alert("ID not found!"); 
                     else { 
@@ -226,10 +229,10 @@
                         document.getElementById('cpeMac').value = d.cpe_mac || ""; 
                         document.getElementById('custRemarks').value = d.remarks || ""; 
                         document.getElementById('rowIdx').value = d.row; 
-                        
+                         
                         if(d.plan) { document.getElementById('planSelector').value = d.plan; _auto(); } 
-                        document.getElementById('appNo').innerText = d.appNo || (_0x1f2[4] + id); 
-                        
+                        document.getElementById('appNo').innerText = d.appNo || (_0x1a2[4] + id); 
+                         
                         document.getElementById('connFiber').checked = (d.connType === "Fiber"); 
                         document.getElementById('connWireless').checked = (d.connType === "Wireless"); 
                         alert("Loaded!"); 
@@ -241,25 +244,25 @@
             const phone = document.getElementById('custPhone').value; 
             const rowIdx = document.getElementById('rowIdx').value; 
             if(phone.length !== 10) return alert("Mobile number 10 digit ka hona chahiye!"); 
-            
+             
             if(a === "update" && !rowIdx) return alert("Pehle Search karein phir hi Update kar sakte hain!"); 
 
             document.getElementById('formAction').value = a; 
             let formData = new FormData(document.getElementById('mainServiceForm')); 
             let params = new URLSearchParams(); 
-            
+             
             for (let pair of formData.entries()) { params.append(pair[0], pair[1]); } 
-            
+             
             params.append("appNo", document.getElementById('appNo').innerText); 
             let conn = ""; 
             if(document.getElementById('connFiber').checked) conn = "Fiber"; 
             else if(document.getElementById('connWireless').checked) conn = "Wireless"; 
             params.append("connType", conn); 
-            
-            if(a === "update") params.append("key", _0x1f2[1]); 
+             
+            if(a === "update") params.append("key", _v(_0x1a2[1])); 
 
-            fetch(_0x1f2[5], {  
-                method: 'POST',  
+            fetch(_0x1a2[5], {   
+                method: 'POST',   
                 body: params.toString(), 
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' } 
             }).then(r => r.text()).then(m => { 
