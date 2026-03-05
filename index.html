@@ -1,280 +1,277 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shan Zone | Service Application Portal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0047ab; --accent: #ff5e14; --dark: #0a1128; --light: #f4f7fa;
-            --lite-color: #3498db; --pro-color: #e67e22; --boost-color: #2c3e50;
-        }
-        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; background-color: #eef2f7; display: none; }
-        .form-luxury-container { background: #fff; max-width: 850px; margin: 0 auto; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #ddd; }
-        .no-print { text-align: center; margin-bottom: 20px; background: #f0f0f0; padding: 15px; border-radius: 10px; }
-        .form-header-row { display: flex; justify-content: space-between; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; }
-        .form-section-title { background: var(--primary); color: white; padding: 6px 15px; font-weight: bold; margin: 15px 0 8px; border-radius: 5px; font-size: 14px; }
-        .form-section-title.center { text-align: center; }
-        .data-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px; }
-        .input-item label { display: block; font-size: 12px; font-weight: 600; color: #444; margin-bottom: 2px; }
-        .input-item input, .input-item select { width: 100%; padding: 6px 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; height: 32px; }
-        .form-photo-upload-box { width: 110px; text-align: center; }
-        .photo-frame { width: 100px; height: 130px; border: 2px dashed #999; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; overflow: hidden; background: #f9f9f9; }
-        .btn-change-photo { font-size: 10px; background: #555; color: #fff; padding: 4px 6px; border-radius: 4px; border: none; cursor: pointer; width: 100%; }
-        .kyc-section { display: flex; gap: 20px; padding: 8px 10px; background: #f9f9f9; border-radius: 5px; border: 1px solid #eee; align-items: center; }
-        .kyc-item { display: flex; align-items: center; font-size: 12px; font-weight: bold; }
-        .kyc-item input { margin-right: 6px; width: 15px; height: 15px; }
-        .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 5px; }
-        .terms-column { font-size: 10.5px; line-height: 1.4; color: #222; text-align: justify; }
-        .terms-column b.head { display: block; margin-bottom: 5px; color: var(--primary); border-bottom: 1px solid #eee; font-size: 12px; padding-bottom: 2px; }
-        .terms-column ol { padding-left: 15px; margin: 0; }
-        .terms-column ol li { margin-bottom: 4px; }
-        .declaration-section { margin-top: 5px; font-size: 12px; background: #fff8e1; padding: 10px; border-radius: 5px; border: 1px solid #ffc107; }
-        .footer-sigs { display: flex; justify-content: space-between; margin-top: 30px; }
-        .sig-box { border-top: 1px solid #000; width: 220px; text-align: center; padding-top: 5px; font-weight: bold; font-size: 12px; }
-        .sig-date { font-size: 11px; font-weight: normal; margin-top: 4px; color: #555; }
-        .action-btns { text-align: center; margin-top: 25px; }
-        .btn-p { padding: 10px 25px; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; margin: 0 10px; color: #fff; }
-        .btn-p.print { background: #27ae60; } .btn-p.reset { background: #e74c3c; } .btn-p.save { background: #0047ab; } .btn-p.update { background: #ff5e14; }
-        @media print {
-            @page { size: A4; margin: 0; }
-            body { background: white; -webkit-print-color-adjust: exact; margin: 0; padding: 0 !important; display: block !important; }
-            .action-btns, .btn-change-photo, .no-print { display: none !important; }
-            .form-luxury-container { max-width: 100% !important; border: none !important; box-shadow: none !important; padding: 12mm 15mm !important; }
-        }
-    </style>
-</head>
-<body>
+<!DOCTYPE html> 
+<html lang="hi"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Shan Zone | Service Application Portal</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+    <style> 
+        :root { 
+            --primary: #0047ab; --accent: #ff5e14; --dark: #0a1128; --light: #f4f7fa; 
+            --lite-color: #3498db; --pro-color: #e67e22; --boost-color: #2c3e50; 
+        } 
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; background-color: #eef2f7; display: none; } 
+        .form-luxury-container { background: #fff; max-width: 850px; margin: 0 auto; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #ddd; } 
+        .no-print { text-align: center; margin-bottom: 20px; background: #f0f0f0; padding: 15px; border-radius: 10px; } 
+        .form-header-row { display: flex; justify-content: space-between; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; } 
+        .form-section-title { background: var(--primary); color: white; padding: 6px 15px; font-weight: bold; margin: 15px 0 8px; border-radius: 5px; font-size: 14px; } 
+        .form-section-title.center { text-align: center; } 
+        .data-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px; } 
+        .input-item label { display: block; font-size: 12px; font-weight: 600; color: #444; margin-bottom: 2px; } 
+        .input-item input, .input-item select { width: 100%; padding: 6px 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; height: 32px; } 
+        .form-photo-upload-box { width: 110px; text-align: center; } 
+        .photo-frame { width: 100px; height: 130px; border: 2px dashed #999; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; overflow: hidden; background: #f9f9f9; } 
+        .btn-change-photo { font-size: 10px; background: #555; color: #fff; padding: 4px 6px; border-radius: 4px; border: none; cursor: pointer; width: 100%; } 
+        .kyc-section { display: flex; gap: 20px; padding: 8px 10px; background: #f9f9f9; border-radius: 5px; border: 1px solid #eee; align-items: center; } 
+        .kyc-item { display: flex; align-items: center; font-size: 12px; font-weight: bold; } 
+        .kyc-item input { margin-right: 6px; width: 15px; height: 15px; } 
+        .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 5px; } 
+        .terms-column { font-size: 10.5px; line-height: 1.4; color: #222; text-align: justify; } 
+        .terms-column b.head { display: block; margin-bottom: 5px; color: var(--primary); border-bottom: 1px solid #eee; font-size: 12px; padding-bottom: 2px; } 
+        .terms-column ol { padding-left: 15px; margin: 0; } 
+        .terms-column ol li { margin-bottom: 4px; } 
+        .declaration-section { margin-top: 5px; font-size: 12px; background: #fff8e1; padding: 10px; border-radius: 5px; border: 1px solid #ffc107; } 
+        .footer-sigs { display: flex; justify-content: space-between; margin-top: 30px; } 
+        .sig-box { border-top: 1px solid #000; width: 220px; text-align: center; padding-top: 5px; font-weight: bold; font-size: 12px; } 
+        .sig-date { font-size: 11px; font-weight: normal; margin-top: 4px; color: #555; } 
+        .action-btns { text-align: center; margin-top: 25px; } 
+        .btn-p { padding: 10px 25px; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; margin: 0 10px; color: #fff; } 
+        .btn-p.print { background: #27ae60; } .btn-p.reset { background: #e74c3c; } .btn-p.save { background: #0047ab; } .btn-p.update { background: #ff5e14; } 
+        @media print { 
+            @page { size: A4; margin: 0; } 
+            body { background: white; -webkit-print-color-adjust: exact; margin: 0; padding: 0 !important; display: block !important; } 
+            .action-btns, .btn-change-photo, .no-print { display: none !important; } 
+            .form-luxury-container { max-width: 100% !important; border: none !important; box-shadow: none !important; padding: 12mm 15mm !important; } 
+        } 
+    </style> 
+</head> 
+<body> 
 
-    <div class="form-luxury-container">
-        <div class="no-print">
-            <b style="font-size: 14px;">पुरानी आईडी सर्च करें: </b>
-            <input type="text" id="searchIdBox" placeholder="Customer ID..." style="padding: 6px; border-radius: 5px; border: 1px solid #ccc; width: 150px;">
-            <button type="button" class="btn-p save" style="padding: 6px 15px; margin-left: 10px; font-size: 12px;" onclick="_srh()">Search</button>
-        </div>
+    <div class="form-luxury-container"> 
+        <div class="no-print"> 
+            <b style="font-size: 14px;">पुरानी आईडी सर्च करें: </b> 
+            <input type="text" id="searchIdBox" placeholder="Customer ID..." style="padding: 6px; border-radius: 5px; border: 1px solid #ccc; width: 150px;"> 
+            <button type="button" class="btn-p save" style="padding: 6px 15px; margin-left: 10px; font-size: 12px;" onclick="_srh()">Search</button> 
+        </div> 
 
-        <div class="form-header-row">
-            <div>
-                <img src="logo.jpg" style="height:50px;">
-                <p style="font-size: 11px; margin:0;"><b>Address:</b> Malmaliya Urf Sirsia, Partawal Bazar</p>
-                <p style="font-size: 11px; margin:0;"><b>Distt:</b> Maharajganj (U.P.) 273301</p>
-                <p style="font-size: 11px; margin:0;"><b>GSTIN:</b> 09ENXPS9608J1ZQ</p>
-            </div>
-            <div style="text-align:center;">
-                <h2 style="margin:0; color:var(--primary); font-size: 24px; text-transform:uppercase;">Customer Service Form</h2>
-                <p style="margin:2px 0; font-size: 13px; font-weight: bold; color: #e74c3c;">App No: <span id="appNo">---</span></p>
-                <p style="margin:2px 0; font-size: 12px;">Customer Care: +91 6391 2244 88</p>
-            </div>
-            <div class="form-photo-upload-box">
-                <div class="photo-frame" id="photoFrame"><span style="color:#999; font-size: 11px;">PHOTO</span></div>
-                <input type="file" id="photoInput" accept="image/jpeg" style="display:none;" onchange="_pre(this)">
-                <button type="button" class="btn-change-photo" onclick="document.getElementById('photoInput').click()">Change Photo</button>
-            </div>
-        </div>
+        <div class="form-header-row"> 
+            <div> 
+                <img src="logo.jpg" style="height:50px;"> 
+                <p style="font-size: 11px; margin:0;"><b>Address:</b> Malmaliya Urf Sirsia, Partawal Bazar</p> 
+                <p style="font-size: 11px; margin:0;"><b>Distt:</b> Maharajganj (U.P.) 273301</p> 
+                <p style="font-size: 11px; margin:0;"><b>GSTIN:</b> 09ENXPS9608J1ZQ</p> 
+            </div> 
+            <div style="text-align:center;"> 
+                <h2 style="margin:0; color:var(--primary); font-size: 24px; text-transform:uppercase;">Customer Service Form</h2> 
+                <p style="margin:2px 0; font-size: 13px; font-weight: bold; color: #e74c3c;">App No: <span id="appNo">---</span></p> 
+                <p style="margin:2px 0; font-size: 12px;">Customer Care: +91 6391 2244 88</p> 
+            </div> 
+            <div class="form-photo-upload-box"> 
+                <div class="photo-frame" id="photoFrame"><span style="color:#999; font-size: 11px;">PHOTO</span></div> 
+                <input type="file" id="photoInput" accept="image/jpeg" style="display:none;" onchange="_pre(this)"> 
+                <button type="button" class="btn-change-photo" onclick="document.getElementById('photoInput').click()">Change Photo</button> 
+            </div> 
+        </div> 
 
-        <form id="mainServiceForm">
-            <input type="hidden" name="row" id="rowIdx">
-            <input type="hidden" name="action" id="formAction" value="save">
+        <form id="mainServiceForm"> 
+            <input type="hidden" name="row" id="rowIdx"> 
+            <input type="hidden" name="action" id="formAction" value="save"> 
 
-            <div class="data-row">
-                <div class="input-item">
-                    <label>तारीख (Date):</label>
-                    <input type="text" name="date" id="formattedDate" readonly onclick="document.getElementById('datePicker').showPicker()" style="cursor:pointer; background: #fff;">
-                    <input type="date" id="datePicker" style="position:absolute; visibility:hidden;" onchange="_updD(this)">
-                </div>
-                <div class="input-item"><label>कस्टमर आईडी (ID):</label><input type="text" name="id" id="custId" placeholder="Office Use Only"></div>
-            </div>
+            <div class="data-row"> 
+                <div class="input-item"> 
+                    <label>तारीख (Date):</label> 
+                    <input type="text" name="date" id="formattedDate" readonly onclick="document.getElementById('datePicker').showPicker()" style="cursor:pointer; background: #fff;"> 
+                    <input type="date" id="datePicker" style="position:absolute; visibility:hidden;" onchange="_updD(this)"> 
+                </div> 
+                <div class="input-item"><label>कस्टमर आईडी (ID):</label><input type="text" name="id" id="custId" placeholder="Office Use Only"></div> 
+            </div> 
 
-            <div class="form-section-title">1. ग्राहक का विवरण एवं KYC (Customer Details)</div>
-            <div class="data-row">
-                <div class="input-item"><label>नाम:</label><input type="text" name="name" id="custName"></div>
-                <div class="input-item"><label>पिता का नाम:</label><input type="text" name="father" id="custFather"></div>
-                <div class="input-item">
-                    <label>मोबाइल नंबर (10 Digit Only):</label>
-                    <input type="tel" name="phone" id="custPhone" pattern="[0-9]{10}" maxlength="10" required placeholder="0000000000">
-                </div>
-                <div class="input-item"><label>ईमेल (Email ID):</label><input type="email" name="email" id="custEmail" required></div>
-                <div class="input-item" style="grid-column: span 2;"><label>पूरा पता:</label><input type="text" name="address" id="custAddress"></div>
-            </div>
+            <div class="form-section-title">1. ग्राहक का विवरण एवं KYC (Customer Details)</div> 
+            <div class="data-row"> 
+                <div class="input-item"><label>नाम:</label><input type="text" name="name" id="custName"></div> 
+                <div class="input-item"><label>पिता का नाम:</label><input type="text" name="father" id="custFather"></div> 
+                <div class="input-item"> 
+                    <label>मोबाइल नंबर (10 Digit Only):</label> 
+                    <input type="tel" name="phone" id="custPhone" pattern="[0-9]{10}" maxlength="10" required placeholder="0000000000"> 
+                </div> 
+                <div class="input-item"><label>ईमेल (Email ID):</label><input type="email" name="email" id="custEmail" required></div> 
+                <div class="input-item" style="grid-column: span 2;"><label>पूरा पता:</label><input type="text" name="address" id="custAddress"></div> 
+            </div> 
 
-            <div class="form-section-title">2. कनेक्शन का विवरण (Plan & Technical Details)</div>
+            <div class="form-section-title">2. कनेक्शन का विवरण (Plan & Technical Details)</div> 
             
-            <div class="kyc-section" style="margin-bottom: 10px; border-bottom: none; border-radius: 5px 5px 0 0;">
-                <div class="kyc-item"><input type="checkbox" name="conn_fiber" id="connFiber" onchange="document.getElementById('connWireless').checked=false"> Fiber Optics</div>
-                <div class="kyc-item"><input type="checkbox" name="conn_wireless" id="connWireless" onchange="document.getElementById('connFiber').checked=false"> Wireless</div>
-            </div>
+            <div class="kyc-section" style="margin-bottom: 10px; border-bottom: none; border-radius: 5px 5px 0 0;"> 
+                <div class="kyc-item"><input type="checkbox" name="conn_fiber" id="connFiber" onchange="document.getElementById('connWireless').checked=false"> Fiber Optics</div> 
+                <div class="kyc-item"><input type="checkbox" name="conn_wireless" id="connWireless" onchange="document.getElementById('connFiber').checked=false"> Wireless</div> 
+            </div> 
 
-            <div class="data-row">
-                <div class="input-item">
-                    <label>प्लान का नाम:</label>
-                    <select id="planSelector" name="plan" onchange="_auto()">
-                        <option value="">--Select--</option>
-                        <option value="LITE">LITE PLAN (30Mbps)</option>
-                        <option value="PRO">PRO PLAN (50Mbps)</option>
-                        <option value="BOOST">BOOST PLAN (100Mbps)</option>
-                    </select>
-                </div>
-                <div class="input-item"><label>स्पीड:</label><input type="text" name="speed" id="speedDisplay" readonly style="background:#f9f9f9;"></div>
-                <div class="input-item"><label>मासिक शुल्क: ₹</label><input type="number" name="price" id="priceDisplay" readonly style="background:#f9f9f9;"></div>
-                <div class="input-item"><label>इंस्टालेशन शुल्क: ₹</label><input type="number" name="install" id="custInstall"></div>
+            <div class="data-row"> 
+                <div class="input-item"> 
+                    <label>प्लान का नाम:</label> 
+                    <select id="planSelector" name="plan" onchange="_auto()"> 
+                        <option value="">--Select--</option> 
+                        <option value="LITE">LITE PLAN (30Mbps)</option> 
+                        <option value="PRO">PRO PLAN (50Mbps)</option> 
+                        <option value="BOOST">BOOST PLAN (100Mbps)</option> 
+                    </select> 
+                </div> 
+                <div class="input-item"><label>स्पीड:</label><input type="text" name="speed" id="speedDisplay" readonly style="background:#f9f9f9;"></div> 
+                <div class="input-item"><label>मासिक शुल्क: ₹</label><input type="number" name="price" id="priceDisplay" readonly style="background:#f9f9f9;"></div> 
+                <div class="input-item"><label>इंस्टालेशन शुल्क: ₹</label><input type="number" name="install" id="custInstall"></div> 
                 
-                <div class="input-item"><label>Router MAC:</label><input type="text" name="router_mac" id="routerMac"></div>
-                <div class="input-item"><label>CPE MAC:</label><input type="text" name="cpe_mac" id="cpeMac"></div>
+                <div class="input-item"><label>Router MAC:</label><input type="text" name="router_mac" id="routerMac"></div> 
+                <div class="input-item"><label>CPE MAC:</label><input type="text" name="cpe_mac" id="cpeMac"></div> 
                 
-                <div class="input-item" style="grid-column: span 2;"><label>Comment:</label><input type="text" name="remarks" id="custRemarks"></div>
-            </div>
+                <div class="input-item" style="grid-column: span 2;"><label>Comment:</label><input type="text" name="remarks" id="custRemarks"></div> 
+            </div> 
 
-            <div class="form-section-title center">3. नियम और शर्तें (Terms & Conditions)</div>
-            <div class="terms-grid">
-                <div class="terms-column">
-                    <b class="head">सामान्य नियम:</b>
-                    <ol>
-                        <li><b>सामान की ओनरशिप:</b> एंटीना, एडेप्टर और वायर कंपनी की संपत्ति है।</li>
-                        <li><b>बिल भुगतान:</b> बिल 1 से 5 तारीख के बीच जमा करना अनिवार्य है।</li>
-                        <li><b>बिजली:</b> एंटीना को बिजली देने की जिम्मेदारी ग्राहक की होगी।</li>
-                        <li><b>दुरुपयोग:</b> गैर-कानूनी गतिविधि के लिए ग्राहक स्वयं जिम्मेदार होगा।</li>
-                        <li><b>सर्विस:</b> खराबी 24-48 घंटे के भीतर ठीक की जाएगी।</li>
-                        <li><b>सुरक्षा:</b> लापरवाही से सामान टूटने पर मरम्मत का खर्च ग्राहक देगा।</li>
-                        <li><b>शिफ्टिंग:</b> शिफ्ट कराने पर अलग से चार्ज लागू होगा।</li>
-                        <li><b>प्लान बदलाव:</b> बदलाव बिलिंग साइकिल की शुरुआत में होगा।</li>
-                        <li><b>राउटर कॉन्फ़िगरेशन:</b> सेटिंग्स छेड़ने पर सर्विस चार्ज लग सकता है।</li>
-                        <li><b>री-कॉन्फ़िगरेशन:</b> तकनीकी टीम को 24-48 घंटे लग सकते हैं।</li>
-                    </ol>
-                </div>
-                <div class="terms-column">
-                    <b class="head">विशेष शर्तें:</b>
-                    <ol>
-                        <li><b>राष्ट्रीय सुरक्षा:</b> देश विरोधी गतिविधि पर सेवा बंद कर दी जाएगी।</li>
-                        <li><b>लॉग रिटेंशन:</b> सरकार के निर्देशानुसार, ग्राहक द्वारा उपयोग किए गए इंटरनेट का 'IP लॉग' रिकॉर्ड किया जाता है।</li>
-                        <li><b>अवैध गतिविधि:</b> साइबर अपराध (Cyber Crime), अश्लील सामग्री (Pornography), या कॉपीराइट उल्लंघन (Piracy) जैसी गतिविधियों के लिए इंटरनेट का उपयोग पूर्णतः वर्जित है।</li>
-                        <li><b>सत्यापन:</b> सही नाम और पते का प्रमाण देना अनिवार्य है।</li>
-                        <li><b>री-सेलिंग:</b> इंटरनेट को आगे बेचना कानूनी अपराध hai।</li>
-                        <li><b>Wi-Fi सुरक्षा:</b> अपना पासवर्ड सुरक्षित रखना आपकी जिम्मेदारी है।</li>
-                        <li><b>बल्क स्पैमिंग:</b>अनधिकृत बल्क मैसेजिंग प्रतिबंधित है। उल्लंघन करने पर सेवा समाप्ति और कानूनी कार्रवाई संभव है।"</li>
-                    </ol>
-                </div>
-            </div>
+            <div class="form-section-title center">3. नियम और शर्तें (Terms & Conditions)</div> 
+            <div class="terms-grid"> 
+                <div class="terms-column"> 
+                    <b class="head">सामान्य नियम:</b> 
+                    <ol> 
+                        <li><b>सामान की ओनरशिप:</b> एंटीना, एडेप्टर और वायर कंपनी की संपत्ति है।</li> 
+                        <li><b>बिल भुगतान:</b> बिल 1 से 5 तारीख के बीच जमा करना अनिवार्य है।</li> 
+                        <li><b>बिजली:</b> एंटीना को बिजली देने की जिम्मेदारी ग्राहक की होगी।</li> 
+                        <li><b>दुरुपयोग:</b> गैर-कानूनी गतिविधि के लिए ग्राहक स्वयं जिम्मेदार होगा।</li> 
+                        <li><b>सर्विस:</b> खराबी 24-48 घंटे के भीतर ठीक की जाएगी।</li> 
+                        <li><b>सुरक्षा:</b> लापरवाही से सामान टूटने पर मरम्मत का खर्च ग्राहक देगा।</li> 
+                        <li><b>शिफ्टिंग:</b> शिफ्ट कराने पर अलग से चार्ज लागू होगा।</li> 
+                        <li><b>प्लान बदलाव:</b> बदलाव बिलिंग साइकिल की शुरुआत में होगा।</li> 
+                        <li><b>राउटर कॉन्फ़िगरेशन:</b> सेटिंग्स छेड़ने पर सर्विस चार्ज लग सकता है।</li> 
+                        <li><b>री-कॉन्फ़िगरेशन:</b> तकनीकी टीम को 24-48 घंटे लग सकते हैं।</li> 
+                    </ol> 
+                </div> 
+                <div class="terms-column"> 
+                    <b class="head">विशेष शर्तें:</b> 
+                    <ol> 
+                        <li><b>राष्ट्रीय सुरक्षा:</b> देश विरोधी गतिविधि पर सेवा बंद कर दी जाएगी।</li> 
+                        <li><b>लॉग रिटेंशन:</b> सरकार के निर्देशानुसार, ग्राहक द्वारा उपयोग किए गए इंटरनेट का 'IP लॉग' रिकॉर्ड किया जाता है।</li> 
+                        <li><b>अवैध गतिविधि:</b> साइबर अपराध (Cyber Crime), अश्लील सामग्री (Pornography), या कॉपीराइट उल्लंघन (Piracy) जैसी गतिविधियों के लिए इंटरनेट का उपयोग पूर्णतः वर्जित है।</li> 
+                        <li><b>सत्यापन:</b> सही नाम और पते का प्रमाण देना अनिवार्य है।</li> 
+                        <li><b>री-सेलिंग:</b> इंटरनेट को आगे बेचना कानूनी अपराध hai।</li> 
+                        <li><b>Wi-Fi सुरक्षा:</b> अपना पासवर्ड सुरक्षित रखना आपकी जिम्मेदारी है।</li> 
+                        <li><b>बल्क स्पैमिंग:</b> अनधिकृत बल्क मैसेजिंग प्रतिबंधित है। उल्लंघन करने पर सेवा समाप्ति और कानूनी कार्रवाई संभव है।"</li> 
+                    </ol> 
+                </div> 
+            </div> 
 
-            <div class="form-section-title">4. घोषणा (Declaration)</div>
-            <div class="declaration-section">
-                <label style="cursor:pointer; display:flex; align-items:center;">
-                    <input type="checkbox" id="agreeCheck" style="width:18px; height:18px; margin-right:10px;">
-                    मैं घोषित करता हूँ कि मैंने सभी नियम पढ़ लिए हैं और मैं सहमत हूँ।
-                </label>
-            </div>
+            <div class="form-section-title">4. घोषणा (Declaration)</div> 
+            <div class="declaration-section"> 
+                <label style="cursor:pointer; display:flex; align-items:center;"> 
+                    <input type="checkbox" id="agreeCheck" style="width:18px; height:18px; margin-right:10px;"> 
+                    मैं घोषित करता हूँ कि मैंने सभी नियम पढ़ लिए हैं और मैं सहमत हूँ। 
+                </label> 
+            </div> 
 
-            <div class="footer-sigs">
-                <div class="sig-box">ग्राहक के हस्ताक्षर<div class="sig-date">Date: ____________________</div></div>
-                <div class="sig-box">शान ज़ोन अधिकृत हस्ताक्षर</div>
-            </div>
+            <div class="footer-sigs"> 
+                <div class="sig-box">ग्राहक के हस्ताक्षर<div class="sig-date">Date: ____________________</div></div> 
+                <div class="sig-box">शान ज़ोन अधिकृत हस्ताक्षर</div> 
+            </div> 
 
-            <div class="action-btns">
-                <button type="button" class="btn-p reset" onclick="_res()">Reset</button>
-                <button type="button" class="btn-p save" onclick="_sub('save')">Save</button>
-                <button type="button" class="btn-p update" onclick="_sub('update')">Update</button>
-                <button type="button" class="btn-p print" onclick="_prt()">Print Form</button>
-            </div>
-        </form>
-    </div>
+            <div class="action-btns"> 
+                <button type="button" class="btn-p reset" onclick="_res()">Reset</button> 
+                <button type="button" class="btn-p save" onclick="_sub('save')">Save</button> 
+                <button type="button" class="btn-p update" onclick="_sub('update')">Update</button> 
+                <button type="button" class="btn-p print" onclick="_prt()">Print Form</button> 
+            </div> 
+        </form> 
+    </div> 
 
-    <script>
-        // Mapping as per Sheet: A-Date, B-ID, C-Name, D-Father, E-Mobile, F-Email, G-Address, H-Plan, I-Speed, J-Price, K-RouterMAC, L-CPEMAC, M-Install, N-ConnType, O-Comment, P-AppNo
+    <script> 
         const _0x1f2 = ['shan123','shan_secure_786','display','block','SZ-','https://script.google.com/macros/s/AKfycbwAR7ybfU1EhZTZen47MRboqpKMfy1JYfb9hQnXmvG1Y0dzpkRki21fshak-OObKG6I/exec'];
+ 
+        window.onload = function() { 
+            if (prompt("Access Password:") === _0x1f2[0]) { 
+                document.body.style[_0x1f2[2]] = _0x1f2[3]; 
+                if(!document.getElementById('rowIdx').value) _gnA(); 
+                _setD(); 
+            } else { location.reload(); } 
+        }; 
 
-        window.onload = function() {
-            if (prompt("Access Password:") === _0x1f2[0]) {
-                document.body.style[_0x1f2[2]] = _0x1f2[3];
-                if(!document.getElementById('rowIdx').value) _gnA();
-                _setD();
-            } else { location.reload(); }
-        };
+        function _gnA() { document.getElementById('appNo').innerText = _0x1f2[4] + Math.floor(1000 + Math.random() * 9000); } 
 
-        function _gnA() { document.getElementById('appNo').innerText = _0x1f2[4] + Math.floor(1000 + Math.random() * 9000); }
+        function _setD() { 
+            const d = new Date(); 
+            const ms = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]; 
+            document.getElementById('formattedDate').value = String(d.getDate()).padStart(2,'0') + "-" + ms[d.getMonth()] + "-" + d.getFullYear(); 
+        } 
 
-        function _setD() {
-            const d = new Date();
-            const ms = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
-            document.getElementById('formattedDate').value = String(d.getDate()).padStart(2,'0') + "-" + ms[d.getMonth()] + "-" + d.getFullYear();
-        }
+        function _auto() { 
+            const plan = document.getElementById('planSelector').value; 
+            const s = document.getElementById('speedDisplay'), p = document.getElementById('priceDisplay'); 
+            if(plan==="LITE"){ s.value="30 Mbps"; p.value="599"; } 
+            else if(plan==="PRO"){ s.value="50 Mbps"; p.value="799"; } 
+            else if(plan==="BOOST"){ s.value="100 Mbps"; p.value="1150"; } 
+            else { s.value=""; p.value=""; } 
+        } 
 
-        function _auto() {
-            const plan = document.getElementById('planSelector').value;
-            const s = document.getElementById('speedDisplay'), p = document.getElementById('priceDisplay');
-            if(plan==="LITE"){ s.value="30 Mbps"; p.value="599"; }
-            else if(plan==="PRO"){ s.value="50 Mbps"; p.value="799"; }
-            else if(plan==="BOOST"){ s.value="100 Mbps"; p.value="1150"; }
-            else { s.value=""; p.value=""; }
-        }
-
-        function _srh() {
-            let id = document.getElementById('searchIdBox').value;
-            if(!id) return alert("Enter ID!");
-            fetch(_0x1f2[5] + "?id=" + id + "&key=" + _0x1f2[1])
-                .then(r => r.json()).then(d => {
-                    if(d === "Not Found") alert("ID not found!");
-                    else {
-                        // Filling data based on your 16 columns
-                        document.getElementById('formattedDate').value = d.date || "";
-                        document.getElementById('custId').value = id;
-                        document.getElementById('custName').value = d.name || "";
-                        document.getElementById('custFather').value = d.father || "";
-                        document.getElementById('custPhone').value = d.phone || "";
-                        document.getElementById('custEmail').value = d.email || "";
-                        document.getElementById('custAddress').value = d.address || "";
-                        document.getElementById('custInstall').value = d.install || "";
-                        document.getElementById('routerMac').value = d.router_mac || "";
-                        document.getElementById('cpeMac').value = d.cpe_mac || "";
-                        document.getElementById('custRemarks').value = d.remarks || "";
-                        document.getElementById('rowIdx').value = d.row;
+        function _srh() { 
+            let id = document.getElementById('searchIdBox').value; 
+            if(!id) return alert("Enter ID!"); 
+            fetch(_0x1f2[5] + "?id=" + id + "&key=" + _0x1f2[1]) 
+                .then(r => r.json()).then(d => { 
+                    if(d === "Not Found") alert("ID not found!"); 
+                    else { 
+                        document.getElementById('formattedDate').value = d.date || ""; 
+                        document.getElementById('custId').value = id; 
+                        document.getElementById('custName').value = d.name || ""; 
+                        document.getElementById('custFather').value = d.father || ""; 
+                        document.getElementById('custPhone').value = d.phone || ""; 
+                        document.getElementById('custEmail').value = d.email || ""; 
+                        document.getElementById('custAddress').value = d.address || ""; 
+                        document.getElementById('custInstall').value = d.install || ""; 
+                        document.getElementById('routerMac').value = d.router_mac || ""; 
+                        document.getElementById('cpeMac').value = d.cpe_mac || ""; 
+                        document.getElementById('custRemarks').value = d.remarks || ""; 
+                        document.getElementById('rowIdx').value = d.row; 
                         
-                        if(d.plan) { document.getElementById('planSelector').value = d.plan; _auto(); }
-                        document.getElementById('appNo').innerText = d.appNo || (_0x1f2[4] + id);
+                        if(d.plan) { document.getElementById('planSelector').value = d.plan; _auto(); } 
+                        document.getElementById('appNo').innerText = d.appNo || (_0x1f2[4] + id); 
                         
-                        document.getElementById('connFiber').checked = (d.connType === "Fiber");
-                        document.getElementById('connWireless').checked = (d.connType === "Wireless");
-                        alert("Loaded!");
-                    }
-                });
-        }
+                        document.getElementById('connFiber').checked = (d.connType === "Fiber"); 
+                        document.getElementById('connWireless').checked = (d.connType === "Wireless"); 
+                        alert("Loaded!"); 
+                    } 
+                }); 
+        } 
 
-        function _sub(a) {
-            const phone = document.getElementById('custPhone').value;
-            const rowIdx = document.getElementById('rowIdx').value;
-            if(phone.length !== 10) return alert("Mobile number 10 digit ka hona chahiye!");
+        function _sub(a) { 
+            const phone = document.getElementById('custPhone').value; 
+            const rowIdx = document.getElementById('rowIdx').value; 
+            if(phone.length !== 10) return alert("Mobile number 10 digit ka hona chahiye!"); 
             
-            if(a === "update" && !rowIdx) return alert("Pehle Search karein phir hi Update kar sakte hain!");
+            if(a === "update" && !rowIdx) return alert("Pehle Search karein phir hi Update kar sakte hain!"); 
 
-            document.getElementById('formAction').value = a;
-            let formData = new FormData(document.getElementById('mainServiceForm'));
-            let params = new URLSearchParams();
+            document.getElementById('formAction').value = a; 
+            let formData = new FormData(document.getElementById('mainServiceForm')); 
+            let params = new URLSearchParams(); 
             
-            // Map all 16 fields correctly for the script
-            for (let pair of formData.entries()) { params.append(pair[0], pair[1]); }
+            for (let pair of formData.entries()) { params.append(pair[0], pair[1]); } 
             
-            params.append("appNo", document.getElementById('appNo').innerText);
-            let conn = "";
-            if(document.getElementById('connFiber').checked) conn = "Fiber";
-            else if(document.getElementById('connWireless').checked) conn = "Wireless";
-            params.append("connType", conn);
+            params.append("appNo", document.getElementById('appNo').innerText); 
+            let conn = ""; 
+            if(document.getElementById('connFiber').checked) conn = "Fiber"; 
+            else if(document.getElementById('connWireless').checked) conn = "Wireless"; 
+            params.append("connType", conn); 
             
-            if(a === "update") params.append("key", _0x1f2[1]);
+            if(a === "update") params.append("key", _0x1f2[1]); 
 
-            fetch(_0x1f2[5], { 
-                method: 'POST', 
-                body: params.toString(),
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            }).then(r => r.text()).then(m => {
-                alert(m);
-                if(a === "save") _res();
-            });
-        }
+            fetch(_0x1f2[5], {  
+                method: 'POST',  
+                body: params.toString(), 
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' } 
+            }).then(r => r.text()).then(m => { 
+                alert(m); 
+                if(a === "save") _res(); 
+            }); 
+        } 
 
-        function _pre(i){if(i.files&&i.files[0]){var r=new FileReader();r.onload=function(e){document.getElementById('photoFrame').innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;">';};r.readAsDataURL(i.files[0]);}}
-        function _updD(i){const d=new Date(i.value);const m=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];document.getElementById('formattedDate').value=String(d.getDate()).padStart(2,'0')+"-"+m[d.getMonth()]+"-"+d.getFullYear();}
-        function _prt(){if(document.getElementById('agreeCheck').checked) window.print(); else alert("Pehle declaration par tick karein!");}
-        function _res(){if(confirm("Reset?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); _setD(); document.getElementById('photoFrame').innerHTML='PHOTO';}}
-    </script>
-</body>
-</html>
+        function _pre(i){if(i.files&&i.files[0]){var r=new FileReader();r.onload=function(e){document.getElementById('photoFrame').innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;">';};r.readAsDataURL(i.files[0]);}} 
+        function _updD(i){const d=new Date(i.value);const m=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];document.getElementById('formattedDate').value=String(d.getDate()).padStart(2,'0')+"-"+m[d.getMonth()]+"-"+d.getFullYear();} 
+        function _prt(){if(document.getElementById('agreeCheck').checked) window.print(); else alert("Pehle declaration par tick karein!");} 
+        function _res(){if(confirm("Reset?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); _setD(); document.getElementById('photoFrame').innerHTML='PHOTO';}} 
+    </script> 
+ </body> 
+ </html>
