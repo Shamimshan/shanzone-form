@@ -18,193 +18,227 @@
 }
 body {
     font-family: 'Poppins', sans-serif;
-    margin: 0; padding: 20px;
+    margin: 0;
+    padding: 20px;
     background-color: #eef2f7;
     display: none;
 }
 .form-luxury-container {
-    background: #fff;
-    max-width: 850px;
+    background: linear-gradient(145deg,#ffffff,#f7f9fc);
+    max-width: 900px;
     margin: 0 auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     border: 1px solid #ddd;
 }
 .no-print {
     text-align: center;
-    margin-bottom: 20px;
-    background: #f0f0f0;
+    margin-bottom: 25px;
+    background: #f7f7f7;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
+    font-weight: 600;
 }
-/* CSC Layer Updated Styling */
 .form-header-row {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 10px;
-    margin-bottom: 15px;
     align-items: center;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+.form-header-row img {
+    height: 60px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 .form-section-title {
     background: var(--primary);
-    color: white;
-    padding: 6px 15px;
-    font-weight: bold;
-    margin: 15px 0 8px;
-    border-radius: 5px;
+    color: #fff;
+    padding: 8px 16px;
+    font-weight: 600;
+    margin: 18px 0 10px;
+    border-radius: 6px;
     font-size: 14px;
 }
-.form-section-title.center { text-align:center; }
+.form-section-title.center { text-align: center; }
 .data-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 10px;
+    gap: 18px;
+    margin-bottom: 12px;
 }
 .input-item label {
     display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 2px;
-}
-.input-item input, .input-item select {
-    width: 100%;
-    padding: 6px 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 3px;
+}
+.input-item input,
+.input-item select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
     box-sizing: border-box;
-    height: 32px;
+    height: 34px;
 }
 .form-photo-upload-box {
-    width: 110px;
+    width: 120px;
     text-align: center;
 }
 .photo-frame {
-    width: 100px;
-    height: 130px;
+    width: 110px;
+    height: 140px;
     border: 2px dashed #999;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     overflow: hidden;
     background: #f9f9f9;
+    border-radius: 6px;
 }
 .btn-change-photo {
-    font-size: 10px;
+    font-size: 11px;
     background: #555;
     color: #fff;
-    padding: 4px 6px;
-    border-radius: 4px;
+    padding: 5px 7px;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
     width: 100%;
 }
 .kyc-section {
     display: flex;
-    gap: 20px;
-    padding: 8px 10px;
+    gap: 22px;
+    padding: 10px 12px;
     background: #f9f9f9;
-    border-radius: 5px;
+    border-radius: 6px;
     border: 1px solid #eee;
     align-items: center;
 }
-.kyc-item { display: flex; align-items: center; font-size:12px; font-weight:bold; }
-.kyc-item input { margin-right:6px; width:15px; height:15px; }
-.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top:5px; }
-.terms-column { font-size:10.5px; line-height:1.4; color:#222; text-align: justify; }
-.terms-column b.head { display:block; margin-bottom:5px; color:var(--primary); border-bottom:1px solid #eee; font-size:12px; padding-bottom:2px; }
-.terms-column ol { padding-left:15px; margin:0; }
-.terms-column ol li { margin-bottom:4px; }
-.declaration-section {
-    margin-top:5px;
-    font-size:12px;
-    background:#fff8e1;
-    padding:10px;
-    border-radius:5px;
-    border:1px solid #ffc107;
+.kyc-item {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
 }
-.footer-sigs { display:flex; justify-content:space-between; margin-top:30px; }
-.sig-box { border-top:1px solid #000; width:220px; text-align:center; padding-top:5px; font-weight:bold; font-size:12px; }
-.sig-date { font-size:11px; font-weight:normal; margin-top:4px; color:#555; }
-.action-btns { text-align:center; margin-top:25px; }
-.btn-p { padding:10px 25px; font-weight:bold; border-radius:8px; border:none; cursor:pointer; margin:0 10px; color:#fff; }
-.btn-p.print { background:#27ae60; } .btn-p.reset { background:#e74c3c; } .btn-p.save { background:#0047ab; } .btn-p.update { background:#ff5e14; }
+.kyc-item input { margin-right: 8px; width: 17px; height: 17px; }
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
+.terms-column { font-size: 11px; line-height: 1.5; color: #222; text-align: justify; }
+.terms-column b.head { display: block; margin-bottom: 6px; color: var(--primary); border-bottom: 1px solid #eee; font-size: 12.5px; padding-bottom: 2px; }
+.terms-column ol { padding-left: 18px; margin: 0; }
+.terms-column ol li { margin-bottom: 5px; }
+.declaration-section {
+    margin-top: 8px;
+    font-size: 13px;
+    background: #fff8e1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ffc107;
+}
+.footer-sigs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+.sig-box {
+    border-top: 1px solid #000;
+    width: 230px;
+    text-align: center;
+    padding-top: 6px;
+    font-weight: bold;
+    font-size: 12.5px;
+}
+.sig-date { font-size: 11px; font-weight: normal; margin-top: 4px; color: #555; }
+.action-btns {
+    text-align: center;
+    margin-top: 28px;
+}
+.btn-p {
+    padding: 11px 28px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 8px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.btn-p.print { background: #27ae60; }
+.btn-p.reset { background: #e74c3c; }
+.btn-p.save { background: #0047ab; }
+.btn-p.update { background: #ff5e14; }
+.btn-p:hover { opacity: 0.9; transform: translateY(-2px); }
 @media print {
-    @page { size:A4; margin:0; }
-    body { background:white; -webkit-print-color-adjust:exact; margin:0; padding:0 !important; display:block !important; }
-    .action-btns, .btn-change-photo, .no-print { display:none !important; }
-    .form-luxury-container { max-width:100% !important; border:none !important; box-shadow:none !important; padding:12mm 15mm !important; }
+    @page { size: A4; margin: 0; }
+    body { background: white; -webkit-print-color-adjust: exact; margin: 0; padding: 0 !important; display: block !important; }
+    .action-btns, .btn-change-photo, .no-print { display: none !important; }
+    .form-luxury-container { max-width: 100% !important; border: none !important; box-shadow: none !important; padding: 12mm 15mm !important; }
 }
 </style>
 </head>
 <body>
+
 <div class="form-luxury-container">
-    <!-- Search Box -->
     <div class="no-print">
-        <b style="font-size:14px;">पुरानी आईडी सर्च करें: </b>
-        <input type="text" id="searchIdBox" placeholder="Customer ID..." style="padding:6px; border-radius:5px; border:1px solid #ccc; width:150px;">
-        <button type="button" class="btn-p save" style="padding:6px 15px; margin-left:10px; font-size:12px;" onclick="_srh()">Search</button>
+        <b style="font-size: 14px;">पुरानी आईडी सर्च करें: </b>
+        <input type="text" id="searchIdBox" placeholder="Customer ID..." style="padding: 6px; border-radius: 5px; border: 1px solid #ccc; width: 150px;">
+        <button type="button" class="btn-p save" style="padding: 6px 15px; margin-left: 10px; font-size: 12px;" onclick="_srh()">Search</button>
     </div>
 
-    <!-- Form Header -->
     <div class="form-header-row">
         <div>
-            <img src="logo.jpg" style="height:50px;">
-            <p style="font-size:11px; margin:0;"><b>Address:</b> Malmaliya Urf Sirsia, Partawal Bazar</p>
-            <p style="font-size:11px; margin:0;"><b>Distt:</b> Maharajganj (U.P.) 273301</p>
-            <p style="font-size:11px; margin:0;"><b>GSTIN:</b> 09ENXPS9608J1ZQ</p>
+            <img src="logo.jpg" alt="Shan Zone Logo">
+            <p style="font-size: 11px; margin:2px 0;"><b>Address:</b> Malmaliya Urf Sirsia, Partawal Bazar</p>
+            <p style="font-size: 11px; margin:2px 0;"><b>Distt:</b> Maharajganj (U.P.) 273301</p>
+            <p style="font-size: 11px; margin:2px 0;"><b>GSTIN:</b> 09ENXPS9608J1ZQ</p>
         </div>
         <div style="text-align:center;">
-            <h2 style="margin:0; color:var(--primary); font-size:24px; text-transform:uppercase;">Customer Service Form</h2>
-            <p style="margin:2px 0; font-size:13px; font-weight:bold; color:#e74c3c;">App No: <span id="appNo">---</span></p>
-            <p style="margin:2px 0; font-size:12px;">Customer Care: +91 6391 2244 88</p>
+            <h2 style="margin:0; color:var(--primary); font-size: 24px; text-transform:uppercase;">Customer Service Form</h2>
+            <p style="margin:2px 0; font-size: 13px; font-weight: bold; color: #e74c3c;">App No: <span id="appNo">---</span></p>
+            <p style="margin:2px 0; font-size: 12px;">Customer Care: +91 6391 2244 88</p>
         </div>
         <div class="form-photo-upload-box">
-            <div class="photo-frame" id="photoFrame"><span style="color:#999; font-size:11px;">PHOTO</span></div>
+            <div class="photo-frame" id="photoFrame"><span style="color:#999; font-size: 11px;">PHOTO</span></div>
             <input type="file" id="photoInput" accept="image/jpeg" style="display:none;" onchange="_pre(this)">
             <button type="button" class="btn-change-photo" onclick="document.getElementById('photoInput').click()">Change Photo</button>
         </div>
     </div>
 
-    <!-- Main Form -->
     <form id="mainServiceForm">
         <input type="hidden" name="row" id="rowIdx">
         <input type="hidden" name="action" id="formAction" value="save">
 
-        <!-- Customer Details -->
+        <!-- Customer Details & KYC -->
+        <div class="form-section-title">1. ग्राहक का विवरण एवं KYC (Customer Details)</div>
         <div class="data-row">
             <div class="input-item"><label>तारीख (Date):</label>
-                <input type="text" name="date" id="formattedDate" readonly onclick="document.getElementById('datePicker').showPicker()" style="cursor:pointer; background:#fff;">
+                <input type="text" name="date" id="formattedDate" readonly onclick="document.getElementById('datePicker').showPicker()" style="cursor:pointer; background: #fff;">
                 <input type="date" id="datePicker" style="position:absolute; visibility:hidden;" onchange="_updD(this)">
             </div>
             <div class="input-item"><label>कस्टमर आईडी (ID):</label><input type="text" name="id" id="custId" placeholder="Office Use Only"></div>
-        </div>
-
-        <div class="form-section-title">1. ग्राहक का विवरण एवं KYC (Customer Details)</div>
-        <div class="data-row">
             <div class="input-item"><label>नाम:</label><input type="text" name="name" id="custName"></div>
             <div class="input-item"><label>पिता का नाम:</label><input type="text" name="father" id="custFather"></div>
-            <div class="input-item"><label>मोबाइल नंबर (10 Digit Only):</label>
-                <input type="tel" name="phone" id="custPhone" pattern="[0-9]{10}" maxlength="10" required placeholder="0000000000">
-            </div>
+            <div class="input-item"><label>मोबाइल नंबर (10 Digit Only):</label><input type="tel" name="phone" id="custPhone" pattern="[0-9]{10}" maxlength="10" required placeholder="0000000000"></div>
             <div class="input-item"><label>ईमेल (Email ID):</label><input type="email" name="email" id="custEmail" required></div>
             <div class="input-item" style="grid-column: span 2;"><label>पूरा पता:</label><input type="text" name="address" id="custAddress"></div>
         </div>
 
-        <!-- Plan Details -->
+        <!-- Plan & Technical Details -->
         <div class="form-section-title">2. कनेक्शन का विवरण (Plan & Technical Details)</div>
-        <div class="kyc-section" style="margin-bottom:10px; border-bottom:none; border-radius:5px 5px 0 0;">
+        <div class="kyc-section" style="margin-bottom: 10px; border-bottom: none; border-radius: 6px 6px 0 0;">
             <div class="kyc-item"><input type="checkbox" name="conn_fiber" id="connFiber" onchange="document.getElementById('connWireless').checked=false"> Fiber Optics</div>
             <div class="kyc-item"><input type="checkbox" name="conn_wireless" id="connWireless" onchange="document.getElementById('connFiber').checked=false"> Wireless</div>
         </div>
 
         <div class="data-row">
-            <div class="input-item"><label>प्लान का नाम:</label>
+            <div class="input-item">
+                <label>प्लान का नाम:</label>
                 <select id="planSelector" name="plan" onchange="_auto()">
                     <option value="">--Select--</option>
                     <option value="LITE">LITE PLAN (30Mbps)</option>
@@ -261,11 +295,13 @@ body {
             </label>
         </div>
 
+        <!-- Signatures -->
         <div class="footer-sigs">
             <div class="sig-box">ग्राहक के हस्ताक्षर<div class="sig-date">Date: ____________________</div></div>
             <div class="sig-box">शान ज़ोन अधिकृत हस्ताक्षर</div>
         </div>
 
+        <!-- Action Buttons -->
         <div class="action-btns">
             <button type="button" class="btn-p reset" onclick="_res()">Reset</button>
             <button type="button" class="btn-p save" onclick="_sub('save')">Save</button>
@@ -275,7 +311,5 @@ body {
     </form>
 </div>
 
-<!-- JS untouched -->
-<script src="form_script.js"></script>
-</body>
-</html>
+<script>
+// Base64 logic for
