@@ -21,7 +21,7 @@
         .input-item label { display: block; font-size: 12px; font-weight: 600; color: #444; margin-bottom: 2px; } 
         .input-item input, .input-item select { width: 100%; padding: 6px 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 13px; box-sizing: border-box; height: 32px; } 
         .form-photo-upload-box { width: 110px; text-align: center; } 
-        .photo-frame { width: 100px; height: 130px; border: 2px dashed #999; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; overflow: hidden; background: #f9f9f9; } 
+        .photo-frame { width: 100px; height: 130px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; overflow: hidden; background: #f9f9f9; } 
         .btn-change-photo { font-size: 10px; background: #555; color: #fff; padding: 4px 6px; border-radius: 4px; border: none; cursor: pointer; width: 100%; } 
         .kyc-section { display: flex; gap: 20px; padding: 8px 10px; background: #f9f9f9; border-radius: 5px; border: 1px solid #eee; align-items: center; } 
         .kyc-item { display: flex; align-items: center; font-size: 12px; font-weight: bold; } 
@@ -33,7 +33,8 @@
         .terms-column ol li { margin-bottom: 4px; } 
         .declaration-section { margin-top: 5px; font-size: 12px; background: #fff8e1; padding: 10px; border-radius: 5px; border: 1px solid #ffc107; } 
         .footer-sigs { display: flex; justify-content: space-between; margin-top: 30px; } 
-        .sig-box { border-top: 1px solid #000; width: 220px; text-align: center; padding-top: 5px; font-weight: bold; font-size: 12px; } 
+        .sig-box { width: 220px; text-align: center; font-weight: bold; font-size: 12px; } 
+        .sig-preview { width: 200px; height: 60px; border-bottom: 1px solid #000; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; } 
         .sig-date { font-size: 11px; font-weight: normal; margin-top: 4px; color: #555; } 
         .action-btns { text-align: center; margin-top: 25px; } 
         .btn-p { padding: 10px 25px; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; margin: 0 10px; color: #fff; } 
@@ -41,7 +42,7 @@
         @media print { 
             @page { size: A4; margin: 0; } 
             body { background: white; -webkit-print-color-adjust: exact; margin: 0; padding: 0 !important; display: block !important; } 
-            .action-btns, .btn-change-photo, .no-print { display: none !important; } 
+            .action-btns, .btn-change-photo, .no-print, .btn-sig { display: none !important; } 
             .form-luxury-container { max-width: 100% !important; border: none !important; box-shadow: none !important; padding: 12mm 15mm !important; } 
         } 
     </style> 
@@ -166,8 +167,18 @@
             </div> 
 
             <div class="footer-sigs"> 
-                <div class="sig-box">ग्राहक के हस्ताक्षर<div class="sig-date">Date: ____________________</div></div> 
-                <div class="sig-box">शान ज़ोन अधिकृत हस्ताक्षर</div> 
+                <div class="sig-box">
+                    <div class="sig-preview" id="custSigFrame">SIGNATURE</div>
+                    <input type="file" id="custSigInput" accept="image/*" style="display:none;" onchange="_preSig(this, 'custSigFrame')">
+                    <button type="button" class="btn-change-photo btn-sig" onclick="document.getElementById('custSigInput').click()">Upload Sign</button>
+                    <div class="sig-date">Date: ____________________</div>
+                </div> 
+                <div class="sig-box">
+                    <div class="sig-preview" id="authSigFrame">SIGNATURE</div>
+                    <input type="file" id="authSigInput" accept="image/*" style="display:none;" onchange="_preSig(this, 'authSigFrame')">
+                    <button type="button" class="btn-change-photo btn-sig" onclick="document.getElementById('authSigInput').click()">Upload Sign</button>
+                    शान ज़ोन अधिकृत हस्ताक्षर
+                </div> 
             </div> 
 
             <div class="action-btns"> 
@@ -180,16 +191,10 @@
     </div> 
 
     <script> 
-        // Base64 logic for security
         const _0x1a2 = [
-            'R3VsaXN0YTEyMw==', // Password: Gulista123
-            'c2hhbl9zZWN1cmVfNzg2', // Key: shan_secure_786
-            'display',
-            'block',
-            'SZ-',
+            'R3VsaXN0YTEyMw==', 'c2hhbl9zZWN1cmVfNzg2', 'display', 'block', 'SZ-',
             'https://script.google.com/macros/s/AKfycbxYcStFoJQ2beMI3LF560Nj2Cor3tbuWvZE9gQ0J8yWi56h2b54Wwk0J_kS1mJBBvbN/exec'
         ]; 
-        
         const _v = (s) => atob(s);
 
         window.onload = function() { 
@@ -201,13 +206,11 @@
         }; 
 
         function _gnA() { document.getElementById('appNo').innerText = _0x1a2[4] + Math.floor(1000 + Math.random() * 9000); } 
-
         function _setD() { 
             const d = new Date(); 
             const ms = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]; 
             document.getElementById('formattedDate').value = String(d.getDate()).padStart(2,'0') + "-" + ms[d.getMonth()] + "-" + d.getFullYear(); 
         } 
-
         function _auto() { 
             const plan = document.getElementById('planSelector').value; 
             const s = document.getElementById('speedDisplay'), p = document.getElementById('priceDisplay'); 
@@ -273,9 +276,10 @@
         } 
 
         function _pre(i){if(i.files&&i.files[0]){var r=new FileReader();r.onload=function(e){document.getElementById('photoFrame').innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;">';};r.readAsDataURL(i.files[0]);}} 
+        function _preSig(i, id){if(i.files&&i.files[0]){var r=new FileReader();r.onload=function(e){document.getElementById(id).innerHTML='<img src="'+e.target.result+'" style="max-width:100%;max-height:100%;">';};r.readAsDataURL(i.files[0]);}}
         function _updD(i){const d=new Date(i.value);const m=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];document.getElementById('formattedDate').value=String(d.getDate()).padStart(2,'0')+"-"+m[d.getMonth()]+"-"+d.getFullYear();} 
         function _prt(){if(document.getElementById('agreeCheck').checked) window.print(); else alert("Pehle declaration par tick karein!");} 
-        function _res(){if(confirm("Reset Form?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); _setD(); document.getElementById('photoFrame').innerHTML='PHOTO';}} 
+        function _res(){if(confirm("Reset Form?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); _setD(); document.getElementById('photoFrame').innerHTML='PHOTO'; document.getElementById('custSigFrame').innerHTML='SIGNATURE'; document.getElementById('authSigFrame').innerHTML='SIGNATURE';}} 
     </script> 
- </body> 
- </html>
+</body> 
+</html>
