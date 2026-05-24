@@ -9,7 +9,6 @@
     <style> 
         :root { 
             --primary: #0047ab; --accent: #ff5e14; --dark: #0a1128; --light: #f4f7fa; 
-            --lite-color: #3498db; --pro-color: #e67e22; --boost-color: #2c3e50; 
         } 
         body { font-family: 'Poppins', sans-serif; margin: 0; padding: 20px; background-color: #eef2f7; display: none; } 
         .form-luxury-container { background: #fff; max-width: 850px; margin: 0 auto; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #ddd; } 
@@ -151,9 +150,9 @@
                         <li><b>लॉग रिटेंशन:</b> सरकार के निर्देशानुसार, ग्राहक द्वारा उपयोग किए गए इंटरनेट का 'IP लॉग' रिकॉर्ड किया जाता है।</li>
                         <li><b>अवैध गतिविधि:</b> साइबर अपराध (Cyber Crime), अश्लील सामग्री (Pornography), या कॉपीराइट उल्लंघन (Piracy) जैसी गतिविधियों के लिए इंटरनेट का उपयोग पूर्णतः वर्जित है।</li>
                         <li><b>सत्यापन:</b> सही नाम और पते का प्रमाण देना अनिवार्य है।</li>
-                        <li><b>री-सेलिंग:</b> इंटरनेट को आगे बेचना कानूनी अपराध hai।</li>
+                        <li><b>री-सेलिंग:</b> इंटरनेट को आगे बेचना कानूनी अपराध है।</li>
                         <li><b>Wi-Fi सुरक्षा:</b> अपना पासवर्ड सुरक्षित रखना आपकी जिम्मेदारी है।</li>
-                        <li><b>बल्क स्पैमिंग:</b>अनधिकृत बल्क मैसेजिंग प्रतिबंधित है। उल्लंघन करने पर सेवा समाप्ति और कानूनी कार्रवाई संभव है।"</li>
+                        <li><b>बल्क स्पैमिंग:</b>अनधिकृत बल्क मैसेजिंग प्रतिबंधित है।</li>
                     </ol> 
                 </div> 
             </div> 
@@ -168,9 +167,8 @@
 
             <div class="footer-sigs"> 
                 <div class="sig-box">
-                    <div class="sig-preview" id="custSigFrame">SIGNATURE</div>
-                    <input type="file" id="custSigInput" accept="image/*" style="display:none;" onchange="_preSig(this, 'custSigFrame')">
-                    <button type="button" class="btn-change-photo btn-sig" onclick="document.getElementById('custSigInput').click()">Upload Sign</button>
+                    <div class="sig-preview" style="border: none;">____________________</div>
+                    ग्राहक के हस्ताक्षर
                     <div class="sig-date">Date: ____________________</div>
                 </div> 
                 <div class="sig-box">
@@ -279,7 +277,7 @@
         function _preSig(i, id){if(i.files&&i.files[0]){var r=new FileReader();r.onload=function(e){document.getElementById(id).innerHTML='<img src="'+e.target.result+'" style="max-width:100%;max-height:100%;">';};r.readAsDataURL(i.files[0]);}}
         function _updD(i){const d=new Date(i.value);const m=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];document.getElementById('formattedDate').value=String(d.getDate()).padStart(2,'0')+"-"+m[d.getMonth()]+"-"+d.getFullYear();} 
         function _prt(){if(document.getElementById('agreeCheck').checked) window.print(); else alert("Pehle declaration par tick karein!");} 
-        function _res(){if(confirm("Reset Form?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); _setD(); document.getElementById('photoFrame').innerHTML='PHOTO'; document.getElementById('custSigFrame').innerHTML='SIGNATURE'; document.getElementById('authSigFrame').innerHTML='SIGNATURE';}} 
+        function _res(){if(confirm("Reset Form?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); _setD(); document.getElementById('photoFrame').innerHTML='PHOTO'; document.getElementById('authSigFrame').innerHTML='SIGNATURE';}} 
     </script> 
 </body> 
 </html>
