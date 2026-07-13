@@ -31,7 +31,7 @@
   <div id="toast" class="toast hidden"></div>
   <script>
     // Paste the /exec URL from your Apps Script Web App deployment here.
-    const API_URL='PASTE_YOUR_APPS_SCRIPT_WEB_APP_EXEC_URL_HERE';
+    const API_URL='https://script.google.com/macros/s/AKfycbz9ipbzR391l9YdVX6RwZjxn17XUJEpHWrdY5QcXjP5jOIHxiVYDQA6-LXAl96on3DnBg/exec';
     const state={token:localStorage.getItem('shanZoneToken')||'',devices:[],editing:false};
     const titles={dashboard:['Dashboard','Network overview and recent activity'],devices:['Devices','Create, search, and maintain device records'],monitoring:['Monitoring','VPS health and device ping synchronization'],genieacs:['GenieACS','Connection status and device count'],logs:['Activity Logs','Recent portal and system events']};
     const $=id=>document.getElementById(id); const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
