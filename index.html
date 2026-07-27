@@ -189,6 +189,11 @@
     </div> 
 
     <script> 
+        let _photoData = null;
+        let _sigData = null;
+        let _existingPhotoUrl = null;
+        let _existingSigUrl = null;
+
         const _0x1a2 = [
             'R3VsaXN0YTEyMw==', 'c2hhbl9zZWN1cmVfNzg2', 'display', 'block', 'SZ-',
             'https://script.google.com/macros/s/AKfycbz7RJroNjkA35swp6_orA1-DzUerg-g3nddw2s9uqUP0RcjjC3tqlFBQxsnmJeEtXtQsA/exec'
@@ -241,6 +246,17 @@
                         document.getElementById('appNo').innerText = d.appNo || (_0x1a2[4] + id); 
                         document.getElementById('connFiber').checked = (d.connType === "Fiber"); 
                         document.getElementById('connWireless').checked = (d.connType === "Wireless"); 
+
+                        _photoData = null; _sigData = null;
+                        _existingPhotoUrl = d.photoUrl || null;
+                        _existingSigUrl = d.sigUrl || null;
+                        document.getElementById('photoFrame').innerHTML = d.photoUrl 
+                            ? '<img src="'+d.photoUrl+'" style="width:100%;height:100%;object-fit:cover;">' 
+                            : '<span style="color:#999; font-size: 11px;">PHOTO</span>';
+                        document.getElementById('authSigFrame').innerHTML = d.sigUrl 
+                            ? '<img src="'+d.sigUrl+'" style="max-width:100%;max-height:100%;">' 
+                            : 'SIGNATURE';
+
                         alert("Data Loaded!"); 
                     } 
                 }).catch(e => alert("Connection Error! Check Internet."));
@@ -261,6 +277,12 @@
             if(document.getElementById('connFiber').checked) conn = "Fiber"; 
             else if(document.getElementById('connWireless').checked) conn = "Wireless"; 
             params.append("connType", conn); 
+
+            if(_photoData) params.append("photo_data", _photoData);
+            params.append("photo_url", _existingPhotoUrl || "");
+            if(_sigData) params.append("sig_data", _sigData);
+            params.append("sig_url", _existingSigUrl || "");
+
             params.append("key", _v(_0x1a2[1])); 
 
             fetch(_0x1a2[5], {   
@@ -273,11 +295,38 @@
             }); 
         } 
 
-        function _pre(i){if(i.files&&i.files[0]){var r=new FileReader();r.onload=function(e){document.getElementById('photoFrame').innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;">';};r.readAsDataURL(i.files[0]);}} 
-        function _preSig(i, id){if(i.files&&i.files[0]){var r=new FileReader();r.onload=function(e){document.getElementById(id).innerHTML='<img src="'+e.target.result+'" style="max-width:100%;max-height:100%;">';};r.readAsDataURL(i.files[0]);}}
+        function _pre(i){
+            if(i.files&&i.files[0]){
+                var r=new FileReader();
+                r.onload=function(e){
+                    _photoData = e.target.result;
+                    document.getElementById('photoFrame').innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;">';
+                };
+                r.readAsDataURL(i.files[0]);
+            }
+        } 
+        function _preSig(i, id){
+            if(i.files&&i.files[0]){
+                var r=new FileReader();
+                r.onload=function(e){
+                    _sigData = e.target.result;
+                    document.getElementById(id).innerHTML='<img src="'+e.target.result+'" style="max-width:100%;max-height:100%;">';
+                };
+                r.readAsDataURL(i.files[0]);
+            }
+        }
         function _updD(i){const d=new Date(i.value);const m=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];document.getElementById('formattedDate').value=String(d.getDate()).padStart(2,'0')+"-"+m[d.getMonth()]+"-"+d.getFullYear();} 
         function _prt(){if(document.getElementById('agreeCheck').checked) window.print(); else alert("Pehle declaration par tick karein!");} 
-        function _res(){if(confirm("Reset Form?")){document.getElementById('mainServiceForm').reset(); document.getElementById('rowIdx').value = ""; _gnA(); _setD(); document.getElementById('photoFrame').innerHTML='PHOTO'; document.getElementById('authSigFrame').innerHTML='SIGNATURE';}} 
+        function _res(){
+            if(confirm("Reset Form?")){
+                document.getElementById('mainServiceForm').reset(); 
+                document.getElementById('rowIdx').value = ""; 
+                _gnA(); _setD(); 
+                document.getElementById('photoFrame').innerHTML='PHOTO'; 
+                document.getElementById('authSigFrame').innerHTML='SIGNATURE';
+                _photoData = null; _sigData = null; _existingPhotoUrl = null; _existingSigUrl = null;
+            }
+        } 
     </script> 
 </body> 
 </html>
